@@ -2,40 +2,151 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 768px)"> 
-    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 767px)"> 
-    <title>Site Web Simple</title>
+    <title>ESTIA Learning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 40px auto;
+            max-width: 800px;
+            line-height: 1.5;
+        }
+        header, nav, .content-block, footer {
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #1f3b57;
+            margin-top: 0;
+        }
+        h2 {
+            color: #1f3b57;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+        .subtitle {
+            color: #666;
+            font-style: italic;
+        }
+        /* Menu horizontal simple */
+        nav ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            text-align: center;
+        }
+        nav li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        /* Tableaux */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #eef2f6;
+            color: #1f3b57;
+        }
+        /* Pied de page */
+        footer {
+            text-align: center;
+            font-size: 0.9em;
+            color: #555;
+            background-color: #eef2f6;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- En-tête -->
     <header>
-        <h1>Mon Site Web Simple</h1>
+        <h1>ESTIA Learning</h1>
+        <p class="subtitle">Plateforme d’apprentissage en ligne pour les étudiants de l’ESTIA</p>
     </header>
 
+    <!-- Menu de navigation -->
     <nav>
         <ul>
             <li><a href="#">Accueil</a></li>
-            <li><a href="#">À propos</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#">Cours</a></li>
+            <li><a href="#">Fonctionnalités</a></li>
+            <li><a href="#">Tarifs</a></li>
         </ul>
     </nav>
 
-    <main class="contenu">
-        <section>
-            <h2>Bienvenue</h2>
-            <p>Ceci est un exemple de texte pour la section de contenu. Le site est construit uniquement avec HTML et CSS.</p>
-        </section>
-        
-        <div class="bloc-info">
-            <h3>Un bloc d'information</h3>
-            <p>Ceci est un bloc distinct dans la section de contenu.</p>
-        </div>
-    </main>
+    <!-- Contenu principal -->
+    <div class="content-block">
+        <h2>Bienvenue</h2>
+        <p>
+            Bienvenue sur le portail ESTIA Learning. Cette plateforme permet aux étudiants d'accéder 
+            à des cours interactifs, de suivre leur progression pédagogique et de discuter 
+            directement avec leurs formateurs et camarades de promotion.
+        </p>
+    </div>
 
+    <div class="content-block">
+        <h2>Fonctionnalités</h2>
+        <ul>
+            <li>Cours interactifs</li>
+            <li>Suivi de progression</li>
+            <li>Discussions entre étudiants et formateurs</li>
+            <li>Abonnements premium</li>
+        </ul>
+    </div>
+
+    <div class="content-block">
+        <h2>Tarifs</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Caractéristiques</th>
+                    <th>Standard (Gratuit)</th>
+                    <th>Premium (Payant)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Accès aux cours</td>
+                    <td>Limité</td>
+                    <td>Illimité</td>
+                </tr>
+                <tr>
+                    <td>Support</td>
+                    <td>Forum</td>
+                    <td>Email prioritaire</td>
+                </tr>
+                <tr>
+                    <td>Certifications</td>
+                    <td>Non</td>
+                    <td>Oui</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pied de page -->
     <footer>
-        <p>&copy; 2025 Mon Site Web. Tous droits réservés.</p>
+        <p>© 2025 ESTIA Learning – Bidart</p>
     </footer>
+
 </body>
 </html>
