@@ -1,57 +1,79 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #fff;
+    background-color: #f9f9f9;
     color: #333;
+    margin: 10px;
+    max-width: 100%;
+    line-height: 1.5;
 }
-
-header {
-    background-color: #333;
-    color: #fff;
+header, nav, .content-block, footer {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
     padding: 15px;
-    text-align: center;
+    margin-bottom: 15px;
 }
-
-nav {
-    background-color: #444;
+h1 {
+    color: #1f3b57;
+    margin-top: 0;
+    font-size: 1.5em;
 }
-
+h2 {
+    color: #1f3b57;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+    font-size: 1.2em;
+}
+.subtitle {
+    color: #666;
+    font-style: italic;
+    font-size: 0.9em;
+}
+/* Menu vertical pour mobile */
 nav ul {
-    list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
+    list-style-type: none;
+    text-align: center;
 }
-
-nav ul li {
-    border-bottom: 1px solid #555;
-}
-
-nav a {
+nav li {
     display: block;
-    padding: 10px;
-    color: #fff;
+    margin: 10px 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+nav li:last-child {
+    border-bottom: none;
+}
+nav a {
+    color: #0066cc;
     text-decoration: none;
-    text-align: center;
+    font-weight: bold;
+    display: block;
 }
-
-.contenu {
-    padding: 15px;
+nav a:hover {
+    text-decoration: underline;
 }
-
-.bloc-info {
-    background-color: #f4f4f4;
-    padding: 10px;
+/* Tableaux responsive */
+table {
+    width: 100%;
+    border-collapse: collapse;
     margin-top: 15px;
-    border: 1px solid #ddd;
+    font-size: 0.9em;
 }
-
+th, td {
+    border: 1px solid #999;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #eef2f6;
+    color: #1f3b57;
+}
+/* Pied de page */
 footer {
-    background-color: #333;
-    color: #fff;
     text-align: center;
-    padding: 15px;
-    margin-top: 20px;
+    font-size: 0.8em;
+    color: #555;
+    background-color: #eef2f6;
+    border: 1px solid #ccc;
 }
