@@ -1,0 +1,21 @@
+body {
+    background-color: gray;
+}
+
+.side-nav {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  background: #333;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.side-nav a {
+  color: white;
+  text-decoration: none;
+}
