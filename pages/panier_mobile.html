@@ -5,27 +5,35 @@
     <title>Panier - ESTIA Learning</title>
     <link rel="stylesheet" href="../assets/css/global/desktop.css" media="screen and (min-width: 768px)"> 
     <link rel="stylesheet" href="../assets/css/global/mobile.css" media="screen and (max-width: 767px)">
+    <link rel="stylesheet" href="../assets/css/global/header.css">
     <link rel="stylesheet" href="../assets/css/panier/desktop.css" media="screen and (min-width: 768px)">
     <link rel="stylesheet" href="../assets/css/panier/mobile.css" media="screen and (max-width: 767px)">
 </head>
 <body>
     <!-- En-tête -->
-    <header>
-        <h1>ESTIA Learning</h1>
-        <p class="subtitle">Votre Panier</p>
+    <header class="site-header">
+        <div class="header-top">
+            <div class="logo-container">
+                <h1>ESTIA Learning</h1>
+                <p>Plateforme d’apprentissage en ligne</p>
+            </div>
+            <div class="user-icons">
+                <a href="#" class="icon-btn icon-profile" title="Mon Profil">👤</a>
+                <a href="panier_desktop.html" class="icon-btn desktop-only" title="Mon Panier">🛒 <span class="badge">2</span></a>
+                <a href="panier_mobile.html" class="icon-btn mobile-only" title="Mon Panier">🛒 <span class="badge">2</span></a>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="cours.html">Cours</a></li>
+                <li><a href="#">Fonctionnalités</a></li>
+                <li><a href="#">Communauté</a></li>
+                <li><a href="#">Tarifs</a></li>
+                <li><a href="#">Profil</a></li>
+            </ul>
+        </nav>
     </header>
-
-    <!-- Menu de navigation -->
-    <nav>
-        <ul>
-            <li><a href="../index.html">Accueil</a></li>
-            <li><a href="cours.html">Cours</a></li>
-            <li><a href="#">Fonctionnalités</a></li>
-            <li><a href="#">Communauté</a></li>
-            <li><a href="#">Tarifs</a></li>
-            <li><a href="#">Profil</a></li>
-        </ul>
-    </nav>
 
     <div class="content-block">
         <h2>Votre panier est vide</h2>

@@ -2,33 +2,196 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Panier - ESTIA Learning</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Panier - ESTIA Learning</title>
+    <!-- Global Styles -->
     <link rel="stylesheet" href="../assets/css/global/desktop.css" media="screen and (min-width: 768px)"> 
     <link rel="stylesheet" href="../assets/css/global/mobile.css" media="screen and (max-width: 767px)">
+    <link rel="stylesheet" href="../assets/css/global/header.css">
+    <!-- Page Specific Styles -->
     <link rel="stylesheet" href="../assets/css/panier/desktop.css" media="screen and (min-width: 768px)">
     <link rel="stylesheet" href="../assets/css/panier/mobile.css" media="screen and (max-width: 767px)">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <!-- En-tête -->
-    <header>
-        <h1>ESTIA Learning</h1>
-        <p class="subtitle">Votre Panier</p>
+    <header class="site-header">
+        <div class="header-top">
+            <div class="logo-container">
+                <h1>ESTIA Learning</h1>
+                <p>Plateforme d’apprentissage en ligne</p>
+            </div>
+            <div class="user-icons">
+                <a href="#" class="icon-btn icon-profile" title="Mon Profil">👤</a>
+                <a href="panier_desktop.html" class="icon-btn desktop-only" title="Mon Panier">🛒 <span class="badge">2</span></a>
+                <a href="panier_mobile.html" class="icon-btn mobile-only" title="Mon Panier">🛒 <span class="badge">2</span></a>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="cours.html">Cours</a></li>
+                <li><a href="#">Fonctionnalités</a></li>
+                <li><a href="#">Communauté</a></li>
+                <li><a href="#">Tarifs</a></li>
+                <li><a href="#">Profil</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Menu de navigation -->
-    <nav>
-        <ul>
-            <li><a href="../index.html">Accueil</a></li>
-            <li><a href="cours.html">Cours</a></li>
-            <li><a href="#">Fonctionnalités</a></li>
-            <li><a href="#">Communauté</a></li>
-            <li><a href="#">Tarifs</a></li>
-            <li><a href="#">Profil</a></li>
-        </ul>
-    </nav>
+    <!-- Contenu Principal -->
+    <main class="cart-page-wrapper">
+        
+        <h2 class="page-title">Mon Panier</h2>
 
-    <div class="content-block">
-        <h2>Votre panier est vide</h2>
-    </div>
+        <div class="cart-layout">
+            <!-- Colonne Gauche : Liste des produits -->
+            <section class="cart-items-section">
+                
+                <!-- Produit 1 -->
+                <article class="cart-item">
+                    <div class="item-image">
+                        <!-- Placeholder pour image de cours -->
+                        <div class="img-placeholder">Python</div>
+                    </div>
+                    <div class="item-details">
+                        <h3>Introduction à Python pour la Data Science</h3>
+                        <p class="author">Par Dr. Dupont</p>
+                        <div class="item-meta">
+                            <span class="rating">⭐ 4.8 (120 avis)</span>
+                            <span class="level">Débutant</span>
+                        </div>
+                    </div>
+                    <div class="item-price">
+                        <span class="current-price">49.99 €</span>
+                        <span class="old-price">89.99 €</span>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-remove" title="Supprimer">🗑️</button>
+                    </div>
+                </article>
+
+                <!-- Produit 2 -->
+                <article class="cart-item">
+                    <div class="item-image">
+                        <div class="img-placeholder" style="background-color: #2ecc71;">UX/UI</div>
+                    </div>
+                    <div class="item-details">
+                        <h3>Masterclass UX/UI Design 2025</h3>
+                        <p class="author">Par Sarah Martin</p>
+                        <div class="item-meta">
+                            <span class="rating">⭐ 4.9 (85 avis)</span>
+                            <span class="level">Intermédiaire</span>
+                        </div>
+                    </div>
+                    <div class="item-price">
+                        <span class="current-price">79.99 €</span>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-remove" title="Supprimer">🗑️</button>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- Colonne Droite : Récapitulatif -->
+            <aside class="cart-summary-section">
+                <div class="summary-card">
+                    <h3>Récapitulatif</h3>
+                    <div class="summary-row">
+                        <span>Sous-total</span>
+                        <span>129.98 €</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>TVA (20%)</span>
+                        <span>26.00 €</span>
+                    </div>
+                    <hr>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span>155.98 €</span>
+                    </div>
+                    <button class="btn-checkout">Payer maintenant</button>
+                    <p class="secure-text">🔒 Paiement 100% sécurisé</p>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Section Cours Similaires -->
+        <section class="similar-courses-section">
+            <h3>Ces cours pourraient vous intéresser</h3>
+            <div class="cards-grid">
+                <div class="mini-card">
+                    <div class="mini-img">JS</div>
+                    <h4>JavaScript Avancé</h4>
+                    <p>39.99 €</p>
+                    <button class="btn-add">+</button>
+                </div>
+                <div class="mini-card">
+                    <div class="mini-img" style="background-color: #e74c3c;">Agile</div>
+                    <h4>Gestion de projet Agile</h4>
+                    <p>29.99 €</p>
+                    <button class="btn-add">+</button>
+                </div>
+                <div class="mini-card">
+                    <div class="mini-img" style="background-color: #9b59b6;">IA</div>
+                    <h4>Intelligence Artificielle</h4>
+                    <p>59.99 €</p>
+                    <button class="btn-add">+</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Bénéfices Premium -->
+        <section class="premium-benefits-section">
+            <h3>Pourquoi passer Premium ?</h3>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <span class="benefit-icon">🎓</span>
+                    <h4>Certificats reconnus</h4>
+                    <p>Obtenez un diplôme officiel à la fin de chaque cours.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">⚡</span>
+                    <h4>Accès illimité</h4>
+                    <p>Accédez à tout le catalogue sans restriction.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">👥</span>
+                    <h4>Mentorat privé</h4>
+                    <p>Des sessions individuelles avec nos experts.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>ESTIA Learning</h4>
+                <p>L'excellence académique en ligne.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Liens utiles</h4>
+                <ul>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Nous suivre</h4>
+                <p>Facebook | Twitter | LinkedIn</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ESTIA Learning. Tous droits réservés.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
