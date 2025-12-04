@@ -67,15 +67,3 @@ footer {
     background-color: #eef2f6;
     border: 1px solid #ccc;
 }
-
-input {
-    align-items: center;
-    style : text-align : left;
-    border-radius : 20px 20px 20px 20px;
-    background-color: transparent;
-}
-
-button {
-    style : text-align : left;
-    border-radius : 20px 20px 20px 20px;
-}

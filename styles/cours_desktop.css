@@ -1,0 +1,13 @@
+input {
+    align-items: center;
+    text-align: left;
+    border-radius: 20px 20px 20px 20px;
+    background-color: transparent;
+}
+
+
+button {
+    text-align: left;
+    border-radius: 20px 20px 20px 20px;
+    background-color: #1f3b57;
+}
