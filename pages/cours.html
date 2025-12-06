@@ -57,7 +57,7 @@
         <div class="courses-grid">
             
             <!-- Cours 1 -->
-            <article class="course-card">
+            <article class="course-card" data-id="python-101" data-name="Introduction à Python pour la Data Science" data-price="49.99" data-author="Dr. Dupont">
                 <div class="course-image" style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);">
                     <span class="category-badge">Python</span>
                     <span>🐍</span>
@@ -74,14 +74,16 @@
                         <span class="old-price">89,99 €</span>
                         <span class="discount-badge">-44%</span>
                     </div>
-                    <button class="btn-add-cart" onclick="addToCart('python-101', 'Introduction à Python pour la Data Science', 49.99, '', 'Dr. Dupont')">
-                        🛒 Ajouter au panier
-                    </button>
+                    <div class="cart-actions">
+                        <button class="btn-qty btn-minus" onclick="removeFromCart('python-101')">−</button>
+                        <span class="qty-display" id="qty-python-101">0</span>
+                        <button class="btn-qty btn-plus" onclick="addToCart('python-101', 'Introduction à Python pour la Data Science', 49.99, '', 'Dr. Dupont')">+</button>
+                    </div>
                 </div>
             </article>
 
             <!-- Cours 2 -->
-            <article class="course-card">
+            <article class="course-card" data-id="uxui-master" data-name="Masterclass UX/UI Design 2025" data-price="79.99" data-author="Sarah Martin">
                 <div class="course-image" style="background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);">
                     <span class="category-badge">Design</span>
                     <span>🎨</span>
@@ -96,14 +98,16 @@
                     <div class="course-price">
                         <span class="price">79,99 €</span>
                     </div>
-                    <button class="btn-add-cart" onclick="addToCart('uxui-master', 'Masterclass UX/UI Design 2025', 79.99, '', 'Sarah Martin')">
-                        🛒 Ajouter au panier
-                    </button>
+                    <div class="cart-actions">
+                        <button class="btn-qty btn-minus" onclick="removeFromCart('uxui-master')">−</button>
+                        <span class="qty-display" id="qty-uxui-master">0</span>
+                        <button class="btn-qty btn-plus" onclick="addToCart('uxui-master', 'Masterclass UX/UI Design 2025', 79.99, '', 'Sarah Martin')">+</button>
+                    </div>
                 </div>
             </article>
 
             <!-- Cours 3 -->
-            <article class="course-card">
+            <article class="course-card" data-id="js-advanced" data-name="JavaScript Avancé" data-price="39.99" data-author="Marc Leroy">
                 <div class="course-image" style="background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);">
                     <span class="category-badge">JavaScript</span>
                     <span>⚡</span>
@@ -118,14 +122,16 @@
                     <div class="course-price">
                         <span class="price">39,99 €</span>
                     </div>
-                    <button class="btn-add-cart" onclick="addToCart('js-advanced', 'JavaScript Avancé', 39.99, '', 'Marc Leroy')">
-                        🛒 Ajouter au panier
-                    </button>
+                    <div class="cart-actions">
+                        <button class="btn-qty btn-minus" onclick="removeFromCart('js-advanced')">−</button>
+                        <span class="qty-display" id="qty-js-advanced">0</span>
+                        <button class="btn-qty btn-plus" onclick="addToCart('js-advanced', 'JavaScript Avancé', 39.99, '', 'Marc Leroy')">+</button>
+                    </div>
                 </div>
             </article>
 
             <!-- Cours 4 -->
-            <article class="course-card">
+            <article class="course-card" data-id="agile-101" data-name="Gestion de projet Agile" data-price="29.99" data-author="Julie Moreau">
                 <div class="course-image" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);">
                     <span class="category-badge">Gestion</span>
                     <span>📋</span>
@@ -140,14 +146,16 @@
                     <div class="course-price">
                         <span class="price">29,99 €</span>
                     </div>
-                    <button class="btn-add-cart" onclick="addToCart('agile-101', 'Gestion de projet Agile', 29.99, '', 'Julie Moreau')">
-                        🛒 Ajouter au panier
-                    </button>
+                    <div class="cart-actions">
+                        <button class="btn-qty btn-minus" onclick="removeFromCart('agile-101')">−</button>
+                        <span class="qty-display" id="qty-agile-101">0</span>
+                        <button class="btn-qty btn-plus" onclick="addToCart('agile-101', 'Gestion de projet Agile', 29.99, '', 'Julie Moreau')">+</button>
+                    </div>
                 </div>
             </article>
 
             <!-- Cours 5 -->
-            <article class="course-card">
+            <article class="course-card" data-id="ai-intro" data-name="Intelligence Artificielle" data-price="59.99" data-author="Prof. Bernard">
                 <div class="course-image" style="background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);">
                     <span class="category-badge">IA</span>
                     <span>🤖</span>
@@ -162,14 +170,16 @@
                     <div class="course-price">
                         <span class="price">59,99 €</span>
                     </div>
-                    <button class="btn-add-cart" onclick="addToCart('ai-intro', 'Intelligence Artificielle', 59.99, '', 'Prof. Bernard')">
-                        🛒 Ajouter au panier
-                    </button>
+                    <div class="cart-actions">
+                        <button class="btn-qty btn-minus" onclick="removeFromCart('ai-intro')">−</button>
+                        <span class="qty-display" id="qty-ai-intro">0</span>
+                        <button class="btn-qty btn-plus" onclick="addToCart('ai-intro', 'Intelligence Artificielle', 59.99, '', 'Prof. Bernard')">+</button>
+                    </div>
                 </div>
             </article>
 
             <!-- Cours 6 -->
-            <article class="course-card">
+            <article class="course-card" data-id="react-az" data-name="React.js de A à Z" data-price="69.99" data-author="Thomas Petit">
                 <div class="course-image" style="background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);">
                     <span class="category-badge">React</span>
                     <span>⚛️</span>
@@ -184,9 +194,11 @@
                     <div class="course-price">
                         <span class="price">69,99 €</span>
                     </div>
-                    <button class="btn-add-cart" onclick="addToCart('react-az', 'React.js de A à Z', 69.99, '', 'Thomas Petit')">
-                        🛒 Ajouter au panier
-                    </button>
+                    <div class="cart-actions">
+                        <button class="btn-qty btn-minus" onclick="removeFromCart('react-az')">−</button>
+                        <span class="qty-display" id="qty-react-az">0</span>
+                        <button class="btn-qty btn-plus" onclick="addToCart('react-az', 'React.js de A à Z', 69.99, '', 'Thomas Petit')">+</button>
+                    </div>
                 </div>
             </article>
 

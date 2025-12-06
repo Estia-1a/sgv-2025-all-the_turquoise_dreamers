@@ -22,11 +22,16 @@ function getCart() {
 function saveCart(cart) {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
     updateCartBadge();
+    updateCourseQuantities(); // Mise à jour des quantités sur la page cours
 }
 
 /**
  * Ajoute un article au panier
- * @param {Object} item - Article à ajouter {id, name, price, image, author}
+ * @param {string} id - ID de l'article
+ * @param {string} name - Nom de l'article
+ * @param {number} price - Prix de l'article
+ * @param {string} image - Image (optionnel)
+ * @param {string} author - Auteur (optionnel)
  */
 function addToCart(id, name, price, image = '', author = '') {
     const cart = getCart();
@@ -71,6 +76,7 @@ function removeFromCart(id, removeAll = false) {
             cart[itemIndex].quantity -= 1;
         }
         saveCart(cart);
+        renderCartItems(); // Rafraîchit la page panier si on y est
     }
 }
 
@@ -84,7 +90,7 @@ function incrementItem(id) {
     if (item) {
         item.quantity += 1;
         saveCart(cart);
-        renderCartItems(); // Rafraîchit l'affichage
+        renderCartItems();
     }
 }
 
@@ -102,7 +108,7 @@ function decrementItem(id) {
         } else {
             removeFromCart(id, true);
         }
-        renderCartItems(); // Rafraîchit l'affichage
+        renderCartItems();
     }
 }
 
@@ -112,6 +118,7 @@ function decrementItem(id) {
 function clearCart() {
     localStorage.removeItem(CART_KEY);
     updateCartBadge();
+    updateCourseQuantities();
     renderCartItems();
 }
 
@@ -136,6 +143,30 @@ function updateCartBadge() {
 }
 
 /**
+ * Met à jour les quantités affichées sur la page cours
+ */
+function updateCourseQuantities() {
+    const cart = getCart();
+    
+    // Trouve tous les affichages de quantité sur la page cours
+    const qtyDisplays = document.querySelectorAll('.qty-display');
+    
+    qtyDisplays.forEach(display => {
+        const courseId = display.id.replace('qty-', '');
+        const item = cart.find(i => i.id === courseId);
+        const qty = item ? item.quantity : 0;
+        display.textContent = qty;
+        
+        // Ajoute/retire une classe pour styler si quantité > 0
+        if (qty > 0) {
+            display.classList.add('has-items');
+        } else {
+            display.classList.remove('has-items');
+        }
+    });
+}
+
+/**
  * Calcule le total du panier
  * @returns {Object} {subtotal, tva, total}
  */
@@ -146,9 +177,9 @@ function calculateCartTotal() {
     const total = subtotal + tva;
     
     return {
-        subtotal: subtotal.toFixed(2),
-        tva: tva.toFixed(2),
-        total: total.toFixed(2)
+        subtotal: subtotal,
+        tva: tva,
+        total: total
     };
 }
 
@@ -220,9 +251,9 @@ function updateCartSummary() {
     const tvaEl = document.getElementById('cart-tva');
     const totalEl = document.getElementById('cart-total');
     
-    if (subtotalEl) subtotalEl.textContent = totals.subtotal + ' €';
-    if (tvaEl) tvaEl.textContent = totals.tva + ' €';
-    if (totalEl) totalEl.textContent = totals.total + ' €';
+    if (subtotalEl) subtotalEl.textContent = totals.subtotal.toFixed(2) + ' €';
+    if (tvaEl) tvaEl.textContent = totals.tva.toFixed(2) + ' €';
+    if (totalEl) totalEl.textContent = totals.total.toFixed(2) + ' €';
 }
 
 /**
@@ -269,6 +300,7 @@ function getRandomColor(id) {
  */
 function initCart() {
     updateCartBadge();
+    updateCourseQuantities(); // Met à jour les quantités sur la page cours
     renderCartItems();
 }
 
