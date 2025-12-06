@@ -37,8 +37,28 @@ function login(email, password) {
         return false;
     }
 
+    // Compte de test : email="123" / password="123"
+    if (email === '123' && password === '123') {
+        const user = {
+            email: 'etudiant@estia.fr',
+            username: 'etudiant',
+            fullName: 'Étudiant ESTIA',
+            loginDate: new Date().toISOString()
+        };
+        
+        localStorage.setItem(AUTH_KEY, 'true');
+        localStorage.setItem(USER_KEY, JSON.stringify(user));
+        showAuthMessage('Connexion réussie ! Redirection...', 'success');
+        
+        setTimeout(() => {
+            window.location.href = 'profile.html';
+        }, 1000);
+        
+        return true;
+    }
+    
     if (!email.includes('@')) {
-        showAuthMessage('Email invalide', 'error');
+        showAuthMessage('Email invalide. Utilisez 123/123 pour tester.', 'error');
         return false;
     }
 
