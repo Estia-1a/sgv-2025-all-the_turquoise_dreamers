@@ -20,17 +20,19 @@
     --radius-sm: 8px;
 }
 
-/* --- Section Progression (Hero) --- */
+/* --- Section Progression (Hero) - Full Width --- */
 .progress-section {
-    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
-    padding: 3rem 2rem;
-    margin-bottom: 3rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2d4a6f 100%);
+    padding: 4rem 0;
+    margin-bottom: 0;
     color: white;
+    width: 100%;
 }
 
 .progress-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
+    padding: 0 2.5rem;
 }
 
 .progress-section h2 {
@@ -92,11 +94,12 @@
     box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
 }
 
-/* --- Section Catalogue --- */
+/* --- Section Catalogue - Full Width --- */
 .courses-catalog {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 2rem 4rem;
+    padding: 4rem 2.5rem;
+    background-color: #ffffff;
 }
 
 .catalog-header {
@@ -369,17 +372,18 @@
     color: #27ae60;
 }
 
-/* --- Footer amélioré --- */
+/* --- Footer amélioré - Full Width --- */
 footer {
-    background: var(--primary-blue);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2d4a6f 100%);
     color: white;
-    margin-top: 4rem;
+    margin-top: 0;
+    width: 100%;
 }
 
 footer .footer-content {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 4rem 2rem 3rem;
+    padding: 4rem 2.5rem 3rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;

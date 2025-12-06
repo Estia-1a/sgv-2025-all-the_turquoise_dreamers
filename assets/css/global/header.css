@@ -33,11 +33,11 @@
     box-shadow: var(--shadow-soft);
 }
 
-/* --- Partie Haute (Logo + User) --- */
+/* --- Partie Haute (Logo + User) - Full Width --- */
 .header-top {
-    max-width: 1280px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 1rem 2rem;
+    padding: 1.25rem 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -192,9 +192,9 @@
 }
 
 .main-nav ul {
-    max-width: 1280px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
