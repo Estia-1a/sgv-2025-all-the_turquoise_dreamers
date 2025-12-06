@@ -6,6 +6,58 @@
 // Clé localStorage pour le panier
 const CART_KEY = 'estia_learning_cart';
 
+// Mapping des métadonnées des cours (catégories, couleurs, icônes, niveaux, ratings)
+const COURSES_METADATA = {
+    'python-101': {
+        categoryName: 'Python',
+        categoryColor: 'linear-gradient(135deg, #3498db 0%, #2980b9 100%)',
+        categoryIcon: '🐍',
+        level: 'beginner',
+        levelText: 'Débutant',
+        rating: '4.8'
+    },
+    'uxui-master': {
+        categoryName: 'Design',
+        categoryColor: 'linear-gradient(135deg, #2ecc71 0%, #27ae60 100%)',
+        categoryIcon: '🎨',
+        level: 'intermediate',
+        levelText: 'Intermédiaire',
+        rating: '4.9'
+    },
+    'js-advanced': {
+        categoryName: 'JavaScript',
+        categoryColor: 'linear-gradient(135deg, #f39c12 0%, #e67e22 100%)',
+        categoryIcon: '⚡',
+        level: 'advanced',
+        levelText: 'Avancé',
+        rating: '4.7'
+    },
+    'agile-101': {
+        categoryName: 'Gestion',
+        categoryColor: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
+        categoryIcon: '📋',
+        level: 'beginner',
+        levelText: 'Débutant',
+        rating: '4.6'
+    },
+    'ai-intro': {
+        categoryName: 'IA',
+        categoryColor: 'linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%)',
+        categoryIcon: '🤖',
+        level: 'advanced',
+        levelText: 'Avancé',
+        rating: '4.9'
+    },
+    'react-az': {
+        categoryName: 'React',
+        categoryColor: 'linear-gradient(135deg, #1abc9c 0%, #16a085 100%)',
+        categoryIcon: '⚛️',
+        level: 'intermediate',
+        levelText: 'Intermédiaire',
+        rating: '4.8'
+    }
+};
+
 /**
  * Récupère le panier depuis localStorage
  * @returns {Array} Tableau des articles du panier
@@ -36,6 +88,16 @@ function saveCart(cart) {
 function addToCart(id, name, price, image = '', author = '') {
     const cart = getCart();
     
+    // Récupère les métadonnées du cours
+    const metadata = COURSES_METADATA[id] || {
+        categoryName: 'Formation',
+        categoryColor: 'linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%)',
+        categoryIcon: '📚',
+        level: 'beginner',
+        levelText: 'Débutant',
+        rating: '4.5'
+    };
+    
     // Vérifie si l'article existe déjà
     const existingIndex = cart.findIndex(item => item.id === id);
     
@@ -43,14 +105,20 @@ function addToCart(id, name, price, image = '', author = '') {
         // L'article existe, on incrémente la quantité
         cart[existingIndex].quantity += 1;
     } else {
-        // Nouvel article
+        // Nouvel article avec métadonnées complètes
         cart.push({
             id: id,
             name: name,
             price: parseFloat(price),
             image: image,
             author: author,
-            quantity: 1
+            quantity: 1,
+            categoryName: metadata.categoryName,
+            categoryColor: metadata.categoryColor,
+            categoryIcon: metadata.categoryIcon,
+            level: metadata.level,
+            levelText: metadata.levelText,
+            rating: metadata.rating
         });
     }
     
@@ -207,29 +275,42 @@ function renderCartItems() {
     if (emptyMessage) emptyMessage.style.display = 'none';
     if (summarySection) summarySection.style.display = 'block';
     
-    // Génère le HTML des articles
+    // Génère le HTML des articles avec le MÊME style que cours.html
     let html = '';
     cart.forEach(item => {
+        // Récupère les métadonnées (si anciennes données sans metadata)
+        const metadata = item.categoryName ? item : COURSES_METADATA[item.id] || {};
+        const categoryName = metadata.categoryName || 'Formation';
+        const categoryColor = metadata.categoryColor || 'linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%)';
+        const categoryIcon = metadata.categoryIcon || '📚';
+        const level = metadata.level || 'beginner';
+        const levelText = metadata.levelText || 'Débutant';
+        const rating = metadata.rating || '4.5';
+        
         html += `
-        <article class="cart-item" data-id="${item.id}">
-            <div class="item-image">
-                <div class="img-placeholder" style="background-color: ${getRandomColor(item.id)};">${item.name.substring(0, 2).toUpperCase()}</div>
+        <article class="cart-course-card" data-id="${item.id}">
+            <div class="course-image" style="background: ${categoryColor};">
+                <span class="category-badge">${categoryName}</span>
+                <span class="course-icon">${categoryIcon}</span>
             </div>
-            <div class="item-details">
+            <div class="course-content">
                 <h3>${item.name}</h3>
-                <p class="author">${item.author || 'ESTIA Learning'}</p>
-            </div>
-            <div class="item-quantity">
-                <button class="qty-btn" onclick="decrementItem('${item.id}')">−</button>
-                <span class="qty-value">${item.quantity}</span>
-                <button class="qty-btn" onclick="incrementItem('${item.id}')">+</button>
-            </div>
-            <div class="item-price">
-                <span class="current-price">${(item.price * item.quantity).toFixed(2)} €</span>
-                <span class="unit-price">${item.price.toFixed(2)} € / unité</span>
-            </div>
-            <div class="item-actions">
-                <button class="btn-remove" onclick="removeFromCart('${item.id}', true); renderCartItems();" title="Supprimer">🗑️</button>
+                <p class="course-author">Par ${item.author || 'ESTIA Learning'}</p>
+                <div class="course-meta">
+                    <span class="rating">⭐ ${rating}</span>
+                    <span class="level ${level}">${levelText}</span>
+                </div>
+                <div class="course-price">
+                    <span class="price">${item.price.toFixed(2)} €</span>
+                    <span class="unit-label">× ${item.quantity}</span>
+                    <span class="total-price">${(item.price * item.quantity).toFixed(2)} €</span>
+                </div>
+                <div class="cart-actions">
+                    <button class="btn-qty btn-minus" onclick="decrementItem('${item.id}')">−</button>
+                    <span class="qty-display">${item.quantity}</span>
+                    <button class="btn-qty btn-plus" onclick="incrementItem('${item.id}')">+</button>
+                    <button class="btn-remove" onclick="removeFromCart('${item.id}', true); renderCartItems();" title="Supprimer">🗑️</button>
+                </div>
             </div>
         </article>
         `;
@@ -296,9 +377,36 @@ function getRandomColor(id) {
 }
 
 /**
+ * Met à jour les anciens articles du panier avec les nouvelles métadonnées
+ */
+function migrateCartData() {
+    const cart = getCart();
+    let needsUpdate = false;
+    
+    cart.forEach(item => {
+        // Si l'article n'a pas de métadonnées, on les ajoute
+        if (!item.categoryName && COURSES_METADATA[item.id]) {
+            const metadata = COURSES_METADATA[item.id];
+            item.categoryName = metadata.categoryName;
+            item.categoryColor = metadata.categoryColor;
+            item.categoryIcon = metadata.categoryIcon;
+            item.level = metadata.level;
+            item.levelText = metadata.levelText;
+            item.rating = metadata.rating;
+            needsUpdate = true;
+        }
+    });
+    
+    if (needsUpdate) {
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    }
+}
+
+/**
  * Initialisation au chargement de la page
  */
 function initCart() {
+    migrateCartData(); // Mise à jour des anciennes données
     updateCartBadge();
     updateCourseQuantities(); // Met à jour les quantités sur la page cours
     renderCartItems();
