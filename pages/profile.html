@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Profil - ESTIA Learning</title>
+    <link rel="stylesheet" href="../assets/css/global/desktop.css" media="screen and (min-width: 768px)"> 
+    <link rel="stylesheet" href="../assets/css/global/mobile.css" media="screen and (max-width: 767px)">
+    <link rel="stylesheet" href="../assets/css/global/header.css">
+    <style>
+        /* Styles spécifiques à la page profil */
+        .profile-wrapper {
+            background: #f8fafc;
+            min-height: 80vh;
+            padding: 3rem 0;
+        }
+
+        .profile-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, #1f3b57 0%, #2d4a6f 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(31, 59, 87, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-details h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .profile-details p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-logout {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-logout:hover {
+            background: white;
+            color: #1f3b57;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-header {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+        }
+
+        .profile-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .profile-card h2 {
+            color: #1f3b57;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0 0 1.5rem 0;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .profile-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .profile-label {
+            font-weight: 600;
+            color: #64748b;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-value {
+            color: #2c3e50;
+            font-size: 1rem;
+            padding: 0.75rem;
+            background: #f8fafc;
+            border-radius: 6px;
+        }
+
+        .btn-edit {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn-edit:hover {
+            background: #1e40af;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .settings-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .settings-item {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s ease;
+        }
+
+        .settings-item:last-child {
+            border-bottom: none;
+        }
+
+        .settings-item:hover {
+            background: #f8fafc;
+        }
+
+        .settings-item-label {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .settings-item-action {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .settings-item-action:hover {
+            text-decoration: underline;
+        }
+
+        .purchase-history {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .purchase-item {
+            padding: 1.25rem;
+            border-left: 4px solid #3b82f6;
+            background: #f8fafc;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+        }
+
+        .purchase-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .purchase-title {
+            font-weight: 600;
+            color: #1f3b57;
+            margin-bottom: 0.5rem;
+        }
+
+        .purchase-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #64748b;
+        }
+
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- En-tête -->
+    <header class="site-header">
+        <div class="header-top">
+            <div class="logo-container">
+                <h1>ESTIA Learning</h1>
+                <p>Plateforme d'apprentissage en ligne</p>
+            </div>
+            <div class="user-icons">
+                <a href="profile.html" class="icon-btn icon-profile" title="Mon Profil">👤</a>
+                <a href="panier_desktop.html" class="icon-btn desktop-only" title="Mon Panier">🛒<span class="cart-badge">0</span></a>
+                <a href="panier_mobile.html" class="icon-btn mobile-only" title="Mon Panier">🛒<span class="cart-badge">0</span></a>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="cours.html">Cours</a></li>
+                <li><a href="#">Fonctionnalités</a></li>
+                <li><a href="#">Communauté</a></li>
+                <li><a href="#">Tarifs</a></li>
+                <li><a href="profile.html" class="active">Profil</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenu principal -->
+    <main class="profile-wrapper">
+        <div class="profile-container">
+            
+            <!-- En-tête du profil -->
+            <div class="profile-header">
+                <div class="profile-info">
+                    <div class="profile-avatar">👨‍🎓</div>
+                    <div class="profile-details">
+                        <h1 id="user-fullname">Utilisateur</h1>
+                        <p id="user-email">utilisateur@email.com</p>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="btn-logout">🚪 Déconnexion</button>
+                </div>
+            </div>
+
+            <!-- Grille de contenu -->
+            <div class="profile-grid">
+                
+                <!-- Colonne gauche : Informations personnelles -->
+                <div>
+                    <div class="profile-card">
+                        <h2>Informations personnelles</h2>
+                        
+                        <div class="profile-section">
+                            <div class="profile-label">Nom complet</div>
+                            <div class="profile-value" id="user-fullname-display">Utilisateur</div>
+                        </div>
+
+                        <div class="profile-section">
+                            <div class="profile-label">Email</div>
+                            <div class="profile-value" id="user-email-display">utilisateur@email.com</div>
+                        </div>
+
+                        <div class="profile-section">
+                            <div class="profile-label">Dernière connexion</div>
+                            <div class="profile-value" id="user-login-date">-</div>
+                        </div>
+
+                        <a href="#" class="btn-edit">✏️ Éditer mon profil</a>
+                    </div>
+
+                    <div class="profile-card" style="margin-top: 2rem;">
+                        <h2>Paramètres du compte</h2>
+                        <ul class="settings-list">
+                            <li class="settings-item">
+                                <span class="settings-item-label">Modifier le mot de passe</span>
+                                <a href="#" class="settings-item-action">Modifier</a>
+                            </li>
+                            <li class="settings-item">
+                                <span class="settings-item-label">Préférences de notification</span>
+                                <a href="#" class="settings-item-action">Gérer</a>
+                            </li>
+                            <li class="settings-item">
+                                <span class="settings-item-label">Confidentialité</span>
+                                <a href="#" class="settings-item-action">Paramètres</a>
+                            </li>
+                            <li class="settings-item">
+                                <span class="settings-item-label">Supprimer le compte</span>
+                                <a href="#" class="settings-item-action" style="color: #e74c3c;">Supprimer</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Colonne droite : Historique des achats -->
+                <div>
+                    <div class="profile-card">
+                        <h2>Historique des achats</h2>
+                        
+                        <ul class="purchase-history">
+                            <li class="purchase-item">
+                                <div class="purchase-title">Introduction à Python pour la Data Science</div>
+                                <div class="purchase-meta">
+                                    <span>📅 5 décembre 2025</span>
+                                    <span>💰 49,99 €</span>
+                                    <span>✅ Complété</span>
+                                </div>
+                            </li>
+                            <li class="purchase-item">
+                                <div class="purchase-title">Masterclass UX/UI Design 2025</div>
+                                <div class="purchase-meta">
+                                    <span>📅 3 décembre 2025</span>
+                                    <span>💰 79,99 €</span>
+                                    <span>⏳ En cours</span>
+                                </div>
+                            </li>
+                            <li class="purchase-item">
+                                <div class="purchase-title">JavaScript Avancé</div>
+                                <div class="purchase-meta">
+                                    <span>📅 28 novembre 2025</span>
+                                    <span>💰 39,99 €</span>
+                                    <span>✅ Complété</span>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="empty-state" style="display: none;">
+                            <div class="empty-state-icon">🛍️</div>
+                            <p>Vous n'avez pas encore effectué d'achat.</p>
+                            <a href="cours.html" class="btn-edit">Découvrir nos cours</a>
+                        </div>
+                    </div>
+
+                    <div class="profile-card" style="margin-top: 2rem;">
+                        <h2>Mes cours en cours</h2>
+                        <ul class="purchase-history">
+                            <li class="purchase-item">
+                                <div class="purchase-title">Masterclass UX/UI Design 2025</div>
+                                <div class="purchase-meta">
+                                    <span>📊 Progression : 65%</span>
+                                    <span>🕐 12h restantes</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>ESTIA Learning</h4>
+                <p>L'excellence académique en ligne.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Liens utiles</h4>
+                <ul>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Nous suivre</h4>
+                <p>Facebook | Twitter | LinkedIn</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ESTIA Learning. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script>
+        // Redirige si non connecté
+        document.addEventListener('DOMContentLoaded', function() {
+            redirectIfNotAuthenticated();
+            displayUserProfile();
+            
+            // Copie les valeurs dans les deux zones d'affichage
+            const user = getCurrentUser();
+            if (user) {
+                const fullnameDisplay = document.getElementById('user-fullname-display');
+                const emailDisplay = document.getElementById('user-email-display');
+                if (fullnameDisplay) fullnameDisplay.textContent = user.fullName;
+                if (emailDisplay) emailDisplay.textContent = user.email;
+            }
+        });
+    </script>
+</body>
+</html>

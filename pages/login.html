@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - ESTIA Learning</title>
+    <link rel="stylesheet" href="../assets/css/global/desktop.css" media="screen and (min-width: 768px)"> 
+    <link rel="stylesheet" href="../assets/css/global/mobile.css" media="screen and (max-width: 767px)">
+    <link rel="stylesheet" href="../assets/css/global/header.css">
+    <style>
+        /* Styles spécifiques à la page de connexion */
+        .login-wrapper {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem 1rem;
+        }
+
+        .login-container {
+            background: white;
+            padding: 3rem 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-header h1 {
+            color: #1f3b57;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-header p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            padding: 0.875rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .btn-login {
+            padding: 1rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .login-footer a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: -0.5rem;
+        }
+
+        .forgot-password a {
+            color: #64748b;
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            color: #3b82f6;
+        }
+
+        /* Messages d'authentification */
+        .auth-message {
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            text-align: center;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .auth-message-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #6ee7b7;
+        }
+
+        .auth-message-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+
+        .auth-message-info {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #93c5fd;
+        }
+    </style>
+</head>
+<body>
+    <!-- En-tête -->
+    <header class="site-header">
+        <div class="header-top">
+            <div class="logo-container">
+                <h1>ESTIA Learning</h1>
+                <p>Plateforme d'apprentissage en ligne</p>
+            </div>
+            <div class="user-icons">
+                <a href="login.html" class="icon-btn icon-profile" title="Se connecter">👤</a>
+                <a href="panier_desktop.html" class="icon-btn desktop-only" title="Mon Panier">🛒<span class="cart-badge">0</span></a>
+                <a href="panier_mobile.html" class="icon-btn mobile-only" title="Mon Panier">🛒<span class="cart-badge">0</span></a>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="cours.html">Cours</a></li>
+                <li><a href="#">Fonctionnalités</a></li>
+                <li><a href="#">Communauté</a></li>
+                <li><a href="#">Tarifs</a></li>
+                <li><a href="login.html" class="active">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenu principal -->
+    <main class="login-wrapper">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>Bienvenue ! 👋</h1>
+                <p>Connectez-vous pour accéder à vos cours</p>
+            </div>
+
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="votre@email.com"
+                        required
+                        autocomplete="email"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="••••••••"
+                        required
+                        autocomplete="current-password"
+                    >
+                </div>
+
+                <div class="forgot-password">
+                    <a href="#">Mot de passe oublié ?</a>
+                </div>
+
+                <button type="submit" class="btn-login">
+                    Se connecter
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <p>Pas encore de compte ? <a href="#">Créer un compte</a></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>ESTIA Learning</h4>
+                <p>L'excellence académique en ligne.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Liens utiles</h4>
+                <ul>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Nous suivre</h4>
+                <p>Facebook | Twitter | LinkedIn</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ESTIA Learning. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script>
+        // Redirige si déjà connecté
+        document.addEventListener('DOMContentLoaded', function() {
+            redirectIfAuthenticated();
+        });
+    </script>
+</body>
+</html>
