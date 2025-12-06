@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement - ESTIA Learning</title>
+    <link rel="stylesheet" href="../assets/css/global/desktop.css" media="screen and (min-width: 768px)"> 
+    <link rel="stylesheet" href="../assets/css/global/mobile.css" media="screen and (max-width: 767px)">
+    <link rel="stylesheet" href="../assets/css/global/header.css">
+    <link rel="stylesheet" href="../assets/css/panier/desktop.css" media="screen and (min-width: 768px)">
+    <link rel="stylesheet" href="../assets/css/panier/mobile.css" media="screen and (max-width: 767px)">
+    <style>
+        .payment-main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .payment-main h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .payment-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .payment-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .payment-form {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .payment-form h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #34495e;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .order-summary {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        .order-summary h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        .order-items {
+            margin-bottom: 1.5rem;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-name {
+            color: #34495e;
+        }
+
+        .item-quantity {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .item-price {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .order-totals {
+            border-top: 2px solid #eee;
+            padding-top: 1rem;
+        }
+
+        .total-line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: #34495e;
+        }
+
+        .total-line.grand-total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #ddd;
+        }
+
+        .btn-pay {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 1.5rem;
+        }
+
+        .btn-pay:hover {
+            background: #219a52;
+        }
+
+        .btn-pay:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        .back-to-cart {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-to-cart:hover {
+            text-decoration: underline;
+        }
+
+        .empty-cart-message {
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .empty-cart-message h3 {
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+
+        .empty-cart-message a {
+            color: #3498db;
+        }
+
+        /* Success modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .modal-content .success-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content h3 {
+            color: #27ae60;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            color: #34495e;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-content .btn-home {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- En-tête -->
+    <header class="site-header">
+        <div class="header-top">
+            <div class="logo-container">
+                <h1>ESTIA Learning</h1>
+                <p>Plateforme d'apprentissage en ligne</p>
+            </div>
+            <div class="user-icons">
+                <a href="#" class="icon-btn icon-profile" title="Mon Profil">👤</a>
+                <a href="panier_desktop.html" class="icon-btn desktop-only" title="Mon Panier">🛒<span class="cart-badge">0</span></a>
+                <a href="panier_mobile.html" class="icon-btn mobile-only" title="Mon Panier">🛒<span class="cart-badge">0</span></a>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="cours.html">Cours</a></li>
+                <li><a href="#">Fonctionnalités</a></li>
+                <li><a href="#">Communauté</a></li>
+                <li><a href="#">Tarifs</a></li>
+                <li><a href="#">Profil</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenu principal -->
+    <main class="payment-main">
+        <a href="panier_desktop.html" class="back-to-cart">← Retour au panier</a>
+        <h2>Finaliser votre commande</h2>
+        
+        <div id="payment-content">
+            <!-- Sera rempli dynamiquement -->
+        </div>
+    </main>
+
+    <!-- Modal de succès -->
+    <div class="modal-overlay" id="success-modal">
+        <div class="modal-content">
+            <div class="success-icon">✅</div>
+            <h3>Paiement réussi !</h3>
+            <p>Merci pour votre achat. Vous pouvez maintenant accéder à vos cours depuis votre espace personnel.</p>
+            <a href="../index.html" class="btn-home" onclick="clearCart()">Retour à l'accueil</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>ESTIA Learning</h4>
+                <p>L'excellence académique en ligne.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Liens utiles</h4>
+                <ul>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Nous suivre</h4>
+                <p>Facebook | Twitter | LinkedIn</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ESTIA Learning. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/cart.js"></script>
+    <script>
+        // Fonctions spécifiques à la page de paiement
+        function renderPaymentPage() {
+            const cart = getCart();
+            const container = document.getElementById('payment-content');
+            
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-cart-message">
+                        <h3>Votre panier est vide</h3>
+                        <p>Vous ne pouvez pas procéder au paiement sans articles dans votre panier.</p>
+                        <p><a href="cours.html">Découvrez nos cours</a></p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const totals = calculateCartTotal();
+            
+            // Générer les items de la commande
+            let orderItemsHTML = cart.map(item => `
+                <div class="order-item">
+                    <div>
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-quantity">Quantité: ${item.quantity}</div>
+                    </div>
+                    <div class="item-price">${(item.price * item.quantity).toFixed(2).replace('.', ',')} €</div>
+                </div>
+            `).join('');
+            
+            container.innerHTML = `
+                <div class="payment-container">
+                    <div class="payment-form">
+                        <h3>Informations de paiement</h3>
+                        <form id="payment-form" onsubmit="processPayment(event)">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required placeholder="votre@email.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="card-name">Nom sur la carte</label>
+                                <input type="text" id="card-name" name="card-name" required placeholder="Jean Dupont">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="card-number">Numéro de carte</label>
+                                <input type="text" id="card-number" name="card-number" required 
+                                       placeholder="1234 5678 9012 3456" 
+                                       maxlength="19"
+                                       oninput="formatCardNumber(this)">
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expiry">Date d'expiration</label>
+                                    <input type="text" id="expiry" name="expiry" required 
+                                           placeholder="MM/AA" 
+                                           maxlength="5"
+                                           oninput="formatExpiry(this)">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" name="cvv" required 
+                                           placeholder="123" 
+                                           maxlength="4">
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn-pay">
+                                Payer ${totals.total.toFixed(2).replace('.', ',')} €
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="order-summary">
+                        <h3>Récapitulatif de commande</h3>
+                        <div class="order-items">
+                            ${orderItemsHTML}
+                        </div>
+                        <div class="order-totals">
+                            <div class="total-line">
+                                <span>Sous-total</span>
+                                <span>${totals.subtotal.toFixed(2).replace('.', ',')} €</span>
+                            </div>
+                            <div class="total-line">
+                                <span>TVA (20%)</span>
+                                <span>${totals.tva.toFixed(2).replace('.', ',')} €</span>
+                            </div>
+                            <div class="total-line grand-total">
+                                <span>Total</span>
+                                <span>${totals.total.toFixed(2).replace('.', ',')} €</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Formatage du numéro de carte
+        function formatCardNumber(input) {
+            let value = input.value.replace(/\s/g, '').replace(/\D/g, '');
+            let formatted = value.match(/.{1,4}/g)?.join(' ') || value;
+            input.value = formatted;
+        }
+        
+        // Formatage de la date d'expiration
+        function formatExpiry(input) {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2);
+            }
+            input.value = value;
+        }
+        
+        // Traitement du paiement (simulation)
+        function processPayment(event) {
+            event.preventDefault();
+            
+            const submitBtn = event.target.querySelector('.btn-pay');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Traitement en cours...';
+            
+            // Simulation d'un délai de traitement
+            setTimeout(() => {
+                // Vider le panier
+                clearCart();
+                
+                // Afficher le modal de succès
+                document.getElementById('success-modal').style.display = 'flex';
+            }, 2000);
+        }
+        
+        // Initialisation au chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderPaymentPage();
+            updateCartBadge();
+        });
+    </script>
+</body>
+</html>

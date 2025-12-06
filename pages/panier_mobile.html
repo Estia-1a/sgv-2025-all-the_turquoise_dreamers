@@ -19,8 +19,8 @@
             </div>
             <div class="user-icons">
                 <a href="#" class="icon-btn icon-profile" title="Mon Profil">👤</a>
-                <a href="panier_desktop.html" class="icon-btn desktop-only" title="Mon Panier">🛒 <span class="badge">2</span></a>
-                <a href="panier_mobile.html" class="icon-btn mobile-only" title="Mon Panier">🛒 <span class="badge">2</span></a>
+                <a href="panier_desktop.html" class="icon-btn desktop-only" title="Mon Panier">🛒<span class="cart-badge">0</span></a>
+                <a href="panier_mobile.html" class="icon-btn mobile-only" title="Mon Panier">🛒<span class="cart-badge">0</span></a>
             </div>
         </div>
         <nav class="main-nav">
@@ -35,9 +35,37 @@
         </nav>
     </header>
 
-    <div class="content-block">
-        <h2>Votre panier est vide</h2>
-    </div>
+    <!-- Contenu principal du panier -->
+    <main class="cart-main">
+        <h2>Mon Panier</h2>
+        
+        <section id="cart-items-container">
+            <!-- Les produits seront générés dynamiquement par JavaScript -->
+        </section>
+        
+        <p id="cart-empty-message" class="cart-empty" style="display: none;">
+            Votre panier est vide. <a href="cours.html">Découvrez nos cours</a>
+        </p>
+        
+        <!-- Résumé de commande -->
+        <div class="cart-summary">
+            <h3>Résumé</h3>
+            <div class="summary-line">
+                <span>Sous-total</span>
+                <span id="cart-subtotal">0,00 €</span>
+            </div>
+            <div class="summary-line">
+                <span>TVA (20%)</span>
+                <span id="cart-tva">0,00 €</span>
+            </div>
+            <div class="summary-line total">
+                <span>Total</span>
+                <span id="cart-total">0,00 €</span>
+            </div>
+            <a href="paiement.html" class="btn-checkout">Passer au paiement</a>
+            <button onclick="clearCart()" class="btn-clear-cart">Vider le panier</button>
+        </div>
+    </main>
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -62,5 +90,7 @@
             <p>&copy; 2025 ESTIA Learning. Tous droits réservés.</p>
         </div>
     </footer>
+
+    <script src="../assets/js/cart.js"></script>
 </body>
 </html>
