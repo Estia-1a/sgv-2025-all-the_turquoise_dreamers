@@ -37,6 +37,12 @@ function login(email, password) {
         return false;
     }
 
+    // Validation minimale pour le compte de test
+    if (email.trim() === '' || password.trim() === '') {
+        showAuthMessage('Veuillez remplir tous les champs', 'error');
+        return false;
+    }
+    
     // Compte de test : email="123" / password="123"
     if (email === '123' && password === '123') {
         const user = {
@@ -57,6 +63,7 @@ function login(email, password) {
         return true;
     }
     
+    // Validation email normale pour les autres comptes
     if (!email.includes('@')) {
         showAuthMessage('Email invalide. Utilisez 123/123 pour tester.', 'error');
         return false;
