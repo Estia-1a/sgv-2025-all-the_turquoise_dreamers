@@ -36,31 +36,43 @@
         </nav>
     </header>
 
-    <!-- Introduction -->
-    <div class="content-block">
-        <h2>Continue ta progression</h2>
-        <input type="search" class="searchbar" placeholder="🔍 Rechercher un cours...">
-        <button>Reprendre mon cours</button>
-    </div>
+    <!-- Section Progression -->
+    <section class="progress-section">
+        <div class="progress-container">
+            <h2>Continue ta progression</h2>
+            <p class="progress-subtitle">Retrouve tes cours et découvre de nouvelles formations</p>
+            <div class="search-wrapper">
+                <input type="search" class="searchbar" placeholder="🔍 Rechercher un cours, une thématique...">
+                <button class="btn-resume">📚 Reprendre mon cours</button>
+            </div>
+        </div>
+    </section>
 
     <!-- Catalogue des cours -->
     <section class="courses-catalog">
-        <h2>Nos Cours</h2>
+        <div class="catalog-header">
+            <h2>Nos Cours</h2>
+            <span class="courses-count">6 formations disponibles</span>
+        </div>
         <div class="courses-grid">
             
             <!-- Cours 1 -->
             <article class="course-card">
-                <div class="course-image" style="background-color: #3498db;">Python</div>
+                <div class="course-image" style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);">
+                    <span class="category-badge">Python</span>
+                    <span>🐍</span>
+                </div>
                 <div class="course-content">
                     <h3>Introduction à Python pour la Data Science</h3>
                     <p class="course-author">Par Dr. Dupont</p>
                     <div class="course-meta">
                         <span class="rating">⭐ 4.8</span>
-                        <span class="level">Débutant</span>
+                        <span class="level beginner">Débutant</span>
                     </div>
                     <div class="course-price">
-                        <span class="price">49.99 €</span>
-                        <span class="old-price">89.99 €</span>
+                        <span class="price">49,99 €</span>
+                        <span class="old-price">89,99 €</span>
+                        <span class="discount-badge">-44%</span>
                     </div>
                     <button class="btn-add-cart" onclick="addToCart('python-101', 'Introduction à Python pour la Data Science', 49.99, '', 'Dr. Dupont')">
                         🛒 Ajouter au panier
@@ -70,16 +82,19 @@
 
             <!-- Cours 2 -->
             <article class="course-card">
-                <div class="course-image" style="background-color: #2ecc71;">UX/UI</div>
+                <div class="course-image" style="background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);">
+                    <span class="category-badge">Design</span>
+                    <span>🎨</span>
+                </div>
                 <div class="course-content">
                     <h3>Masterclass UX/UI Design 2025</h3>
                     <p class="course-author">Par Sarah Martin</p>
                     <div class="course-meta">
                         <span class="rating">⭐ 4.9</span>
-                        <span class="level">Intermédiaire</span>
+                        <span class="level intermediate">Intermédiaire</span>
                     </div>
                     <div class="course-price">
-                        <span class="price">79.99 €</span>
+                        <span class="price">79,99 €</span>
                     </div>
                     <button class="btn-add-cart" onclick="addToCart('uxui-master', 'Masterclass UX/UI Design 2025', 79.99, '', 'Sarah Martin')">
                         🛒 Ajouter au panier
@@ -89,16 +104,19 @@
 
             <!-- Cours 3 -->
             <article class="course-card">
-                <div class="course-image" style="background-color: #f39c12;">JS</div>
+                <div class="course-image" style="background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);">
+                    <span class="category-badge">JavaScript</span>
+                    <span>⚡</span>
+                </div>
                 <div class="course-content">
                     <h3>JavaScript Avancé</h3>
                     <p class="course-author">Par Marc Leroy</p>
                     <div class="course-meta">
                         <span class="rating">⭐ 4.7</span>
-                        <span class="level">Avancé</span>
+                        <span class="level advanced">Avancé</span>
                     </div>
                     <div class="course-price">
-                        <span class="price">39.99 €</span>
+                        <span class="price">39,99 €</span>
                     </div>
                     <button class="btn-add-cart" onclick="addToCart('js-advanced', 'JavaScript Avancé', 39.99, '', 'Marc Leroy')">
                         🛒 Ajouter au panier
@@ -108,16 +126,19 @@
 
             <!-- Cours 4 -->
             <article class="course-card">
-                <div class="course-image" style="background-color: #e74c3c;">Agile</div>
+                <div class="course-image" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);">
+                    <span class="category-badge">Gestion</span>
+                    <span>📋</span>
+                </div>
                 <div class="course-content">
                     <h3>Gestion de projet Agile</h3>
                     <p class="course-author">Par Julie Moreau</p>
                     <div class="course-meta">
                         <span class="rating">⭐ 4.6</span>
-                        <span class="level">Débutant</span>
+                        <span class="level beginner">Débutant</span>
                     </div>
                     <div class="course-price">
-                        <span class="price">29.99 €</span>
+                        <span class="price">29,99 €</span>
                     </div>
                     <button class="btn-add-cart" onclick="addToCart('agile-101', 'Gestion de projet Agile', 29.99, '', 'Julie Moreau')">
                         🛒 Ajouter au panier
@@ -127,16 +148,19 @@
 
             <!-- Cours 5 -->
             <article class="course-card">
-                <div class="course-image" style="background-color: #9b59b6;">IA</div>
+                <div class="course-image" style="background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);">
+                    <span class="category-badge">IA</span>
+                    <span>🤖</span>
+                </div>
                 <div class="course-content">
                     <h3>Intelligence Artificielle</h3>
                     <p class="course-author">Par Prof. Bernard</p>
                     <div class="course-meta">
                         <span class="rating">⭐ 4.9</span>
-                        <span class="level">Avancé</span>
+                        <span class="level advanced">Avancé</span>
                     </div>
                     <div class="course-price">
-                        <span class="price">59.99 €</span>
+                        <span class="price">59,99 €</span>
                     </div>
                     <button class="btn-add-cart" onclick="addToCart('ai-intro', 'Intelligence Artificielle', 59.99, '', 'Prof. Bernard')">
                         🛒 Ajouter au panier
@@ -146,16 +170,19 @@
 
             <!-- Cours 6 -->
             <article class="course-card">
-                <div class="course-image" style="background-color: #1abc9c;">React</div>
+                <div class="course-image" style="background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);">
+                    <span class="category-badge">React</span>
+                    <span>⚛️</span>
+                </div>
                 <div class="course-content">
                     <h3>React.js de A à Z</h3>
                     <p class="course-author">Par Thomas Petit</p>
                     <div class="course-meta">
                         <span class="rating">⭐ 4.8</span>
-                        <span class="level">Intermédiaire</span>
+                        <span class="level intermediate">Intermédiaire</span>
                     </div>
                     <div class="course-price">
-                        <span class="price">69.99 €</span>
+                        <span class="price">69,99 €</span>
                     </div>
                     <button class="btn-add-cart" onclick="addToCart('react-az', 'React.js de A à Z', 69.99, '', 'Thomas Petit')">
                         🛒 Ajouter au panier
