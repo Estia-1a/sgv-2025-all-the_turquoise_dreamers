@@ -1,151 +1,162 @@
 /* =========================================
-   Styles Spécifiques Panier Mobile
+   Styles Spécifiques Panier Mobile (Améliorés)
    ========================================= */
 
 /* Layout général mobile */
 .cart-main {
-    padding: 1rem;
+    padding: 1rem 1.25rem; /* Augmentation du padding latéral */
+    background-color: #f8f9fa; /* Fond légèrement gris */
 }
 
 .cart-main h2 {
-    font-size: 1.5rem;
-    color: #1f3b57;
-    margin-bottom: 1.5rem;
+    font-size: 1.8rem; /* Taille augmentée pour le titre principal */
+    color: #1a3b5d; /* Couleur assombrie pour plus de contraste */
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
 /* Cartes de cours dans le panier (mobile) */
 .cart-course-card {
     background: white;
-    border-radius: 12px;
+    border-radius: 16px; /* Bords plus arrondis */
     overflow: hidden;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    margin-bottom: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07); /* Ombre plus douce */
+    margin-bottom: 1.5rem; /* Espacement augmenté */
+    display: flex; /* Utilisation de flex pour un layout plus robuste */
+    flex-direction: column;
 }
 
 .cart-course-card .course-image {
-    height: 120px;
+    height: 140px; /* Hauteur augmentée */
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     color: white;
-    font-size: 3rem;
+    font-size: 3.5rem; /* Icône plus grande */
 }
 
 .cart-course-card .category-badge {
     position: absolute;
-    top: 8px;
-    left: 8px;
-    background: rgba(255, 255, 255, 0.95);
+    top: 12px;
+    left: 12px;
+    background: rgba(255, 255, 255, 1);
     color: #2c3e50;
-    padding: 3px 10px;
-    border-radius: 16px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
 }
 
 .cart-course-card .course-icon {
-    font-size: 3rem;
+    font-size: 3.5rem;
 }
 
 .cart-course-card .course-content {
-    padding: 1rem;
+    padding: 1.25rem; /* Padding augmenté */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .cart-course-card .course-content h3 {
     margin: 0 0 0.5rem 0;
-    font-size: 1rem;
-    color: #2c3e50;
-    font-weight: 600;
+    font-size: 1.1rem; /* Taille de police augmentée */
+    color: #1a3b5d;
+    font-weight: 700;
 }
 
 .cart-course-card .course-author {
-    margin: 0 0 0.75rem 0;
-    font-size: 0.85rem;
-    color: #7f8c8d;
+    margin: 0 0 1rem 0; /* Marge augmentée */
+    font-size: 0.9rem;
+    color: #8c98a7;
 }
 
 .cart-course-card .course-meta {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
+    gap: 0.5rem;
     flex-wrap: wrap;
+    margin-bottom: 1rem;
+    color: #5a6877;
 }
 
 .cart-course-card .rating {
-    color: #f39c12;
-    font-weight: 600;
-    font-size: 0.85rem;
+    color: #f5b301;
+    font-weight: 700;
+    font-size: 0.9rem;
 }
 
 .cart-course-card .level {
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.02em;
 }
 
 .cart-course-card .level.beginner {
-    background: #d5f4e6;
-    color: #27ae60;
+    background: #e8f7ef;
+    color: #1e874b;
 }
 
 .cart-course-card .level.intermediate {
-    background: #ffeaa7;
-    color: #e67e22;
+    background: #fff3d9;
+    color: #c27a00;
 }
 
 .cart-course-card .level.advanced {
-    background: #ffcdd2;
-    color: #e74c3c;
+    background: #ffe5e9;
+    color: #c0392b;
 }
 
 .cart-course-card .course-price {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
     flex-wrap: wrap;
 }
 
 .cart-course-card .price {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 700;
-    color: #2c3e50;
+    color: #1a3b5d;
 }
 
 .cart-course-card .unit-label {
-    font-size: 0.8rem;
-    color: #7f8c8d;
+    font-size: 0.9rem;
+    color: #5a6877;
 }
 
 .cart-course-card .total-price {
     font-size: 1rem;
     font-weight: 700;
-    color: #27ae60;
+    color: #28a745;
     margin-left: auto;
 }
 
 .cart-course-card .cart-actions {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
+    margin-top: auto; /* Aligne les actions en bas */
+    padding-top: 1rem;
+    border-top: 1px solid #f0f2f5;
 }
 
 .cart-course-card .btn-qty {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
     border: 2px solid #3498db;
     background: white;
     color: #3498db;
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .cart-course-card .btn-qty:active {
@@ -164,26 +175,27 @@
 }
 
 .cart-course-card .qty-display {
-    min-width: 36px;
+    min-width: 38px;
     text-align: center;
     font-weight: 700;
     font-size: 1rem;
-    color: #2c3e50;
+    color: #1a3b5d;
 }
 
 .cart-course-card .btn-remove {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 2px solid #95a5a6;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    border: 2px solid #bdc3c7;
     background: white;
-    color: #95a5a6;
+    color: #7f8c8d;
     font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     margin-left: auto;
 }
 
+.cart-course-card .btn-remove:hover,
 .cart-course-card .btn-remove:active {
     background: #e74c3c;
     border-color: #e74c3c;
@@ -193,153 +205,200 @@
 /* Message panier vide */
 .cart-empty {
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 3rem 1rem;
     color: #7f8c8d;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 /* Résumé de commande mobile */
 .cart-summary {
     background: white;
-    padding: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    margin-top: 1.5rem;
+    padding: 1.5rem; /* Padding augmenté */
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-top: 2rem;
 }
 
 .cart-summary h3 {
-    margin-top: 0;
-    color: #1f3b57;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+    color: #1a3b5d;
+    font-size: 1.4rem; /* Titre plus grand */
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
 .summary-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0.75rem;
-    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.summary-row span:first-child {
+    color: #5a6877; /* Couleur adoucie */
 }
 
 .summary-row.total {
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: #2c3e50;
-    padding-top: 0.75rem;
-    border-top: 2px solid #eee;
-    margin-top: 0.75rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #1a3b5d;
+    padding-top: 1rem;
+    border-top: 2px solid #f0f2f5;
+    margin-top: 1rem;
 }
 
 .btn-checkout {
     width: 100%;
-    padding: 1rem;
-    background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+    padding: 1.1rem;
+    background: linear-gradient(135deg, #28a745 0%, #218838 100%); /* Vert plus vibrant */
     color: white;
     border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
+    border-radius: 12px; /* Bords plus arrondis */
+    font-size: 1.1rem; /* Police plus grande */
+    font-weight: 700;
     cursor: pointer;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3); /* Ombre portée */
     transition: all 0.3s ease;
 }
 
 .btn-checkout:active {
-    transform: scale(0.98);
+    transform: scale(0.98) translateY(1px);
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
 }
 
-.secure-text {
-    text-align: center;
-    font-size: 0.85rem;
-    color: #7f8c8d;
-    margin-top: 0.75rem;
-}
-
-/* Bouton vider le panier (mobile) */
+/* Bouton vider le panier (style amélioré) */
 .btn-clear-cart {
     width: 100%;
-    border: 1px solid #e74c3c;
-    background: white;
-    color: #e74c3c;
-    padding: 0.8rem;
-    border-radius: 8px;
-    margin-top: 0.75rem;
+    border: 2px solid #bdc3c7; /* Bordure plus visible */
+    background: transparent;
+    color: #7f8c8d; /* Couleur de texte sobre */
+    padding: 0.9rem;
+    border-radius: 12px;
+    margin-top: 1rem;
     cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-.btn-clear-cart:active {
+.btn-clear-cart:hover, .btn-clear-cart:active {
+    background: #e74c3c; /* Change au survol/clic pour indiquer une action destructive */
+    color: white;
+    border-color: #e74c3c;
     transform: scale(0.99);
 }
 
 /* --- Cours Similaires (mobile) --- */
+.similar-courses-section {
+    padding: 2rem 1.25rem;
+}
+
+.similar-courses-section h3 {
+    text-align: center;
+    font-size: 1.4rem;
+    color: #1a3b5d;
+    margin-bottom: 1.5rem;
+}
+
 .cards-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 12px;
-    margin-top: 12px;
+    gap: 1rem;
 }
 
 .mini-card {
     background: #fff;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 12px;
+    border: 1px solid #e8eaed;
+    border-radius: 12px;
+    padding: 1rem;
     display: flex;
-    gap: 8px;
+    gap: 1rem;
     align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.mini-card:active {
+    transform: scale(0.97);
 }
 
 .mini-img {
-    width: 64px;
-    height: 64px;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
+    width: 50px; /* Taille ajustée */
+    height: 50px;
+    border-radius: 10px;
+    flex-shrink: 0;
 }
 
 .mini-card h4 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #34495e;
 }
 
 .mini-card p {
     margin: 0;
-    color: #0066cc;
+    color: #27ae60;
     font-weight: bold;
+    font-size: 0.9rem;
 }
 
 .btn-add {
     margin-left: auto;
-    background: #ecf0f1;
+    background: #eaf6ff;
     border: none;
-    border-radius: 6px;
-    padding: 8px 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
+    color: #3498db;
+    font-size: 1.5rem;
+    line-height: 40px; /* Centrer le "+" verticalement */
 }
 
 /* --- Bénéfices Premium (mobile) --- */
 .premium-benefits-section {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 16px;
+    background-color: #eaf6ff; /* Couleur de fond plus engageante */
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 1.25rem;
+}
+
+.premium-benefits-section h3 {
+    text-align: center;
+    font-size: 1.4rem;
+    color: #1a3b5d;
+    margin-bottom: 1.5rem;
 }
 
 .benefits-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 1.5rem; /* Espacement augmenté */
 }
 
 .benefit-item {
     display: flex;
-    gap: 12px;
+    gap: 1rem;
     align-items: center;
+    text-align: left;
 }
 
 .benefit-icon {
-    font-size: 1.8rem;
+    font-size: 2rem;
+    background: rgba(255,255,255,0.5);
+    padding: 0.5rem;
+    border-radius: 50%;
 }
 
+.benefit-item h4 {
+    margin: 0 0 0.25rem 0;
+    color: #1a3b5d;
+}
+
+.benefit-item p {
+    margin: 0;
+    color: #5a6877;
+    font-size: 0.9rem;
+}
