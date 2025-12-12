@@ -253,3 +253,93 @@
     color: #7f8c8d;
     margin-top: 0.75rem;
 }
+
+/* Bouton vider le panier (mobile) */
+.btn-clear-cart {
+    width: 100%;
+    border: 1px solid #e74c3c;
+    background: white;
+    color: #e74c3c;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-top: 0.75rem;
+    cursor: pointer;
+}
+
+.btn-clear-cart:active {
+    transform: scale(0.99);
+}
+
+/* --- Cours Similaires (mobile) --- */
+.cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.mini-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.mini-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.mini-card h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.mini-card p {
+    margin: 0;
+    color: #0066cc;
+    font-weight: bold;
+}
+
+.btn-add {
+    margin-left: auto;
+    background: #ecf0f1;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 10px;
+    cursor: pointer;
+}
+
+/* --- Bénéfices Premium (mobile) --- */
+.premium-benefits-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 16px;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.benefit-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.benefit-icon {
+    font-size: 1.8rem;
+}
+

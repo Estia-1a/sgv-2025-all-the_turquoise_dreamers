@@ -2,12 +2,15 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panier - ESTIA Learning</title>
     <link rel="stylesheet" href="../assets/css/global/desktop.css" media="screen and (min-width: 768px)"> 
     <link rel="stylesheet" href="../assets/css/global/mobile.css" media="screen and (max-width: 767px)">
     <link rel="stylesheet" href="../assets/css/global/header.css">
     <link rel="stylesheet" href="../assets/css/panier/desktop.css" media="screen and (min-width: 768px)">
     <link rel="stylesheet" href="../assets/css/panier/mobile.css" media="screen and (max-width: 767px)">
+    <!-- Google Fonts (same as desktop) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- En-tête -->
@@ -47,7 +50,7 @@
             Votre panier est vide. <a href="cours.html">Découvrez nos cours</a>
         </p>
         
-        <!-- Résumé de commande -->
+        <!-- Résumé de commande (mobile) -->
         <div class="cart-summary">
             <h3>Résumé</h3>
             <div class="summary-line">
@@ -62,10 +65,56 @@
                 <span>Total</span>
                 <span id="cart-total">0,00 €</span>
             </div>
-            <a href="paiement.html" class="btn-checkout">Passer au paiement</a>
-            <button onclick="clearCart()" class="btn-clear-cart">Vider le panier</button>
+            <a href="paiement.html" class="btn-checkout" aria-label="Passer au paiement">Passer au paiement</a>
+            <button onclick="clearCart()" class="btn-clear-cart" aria-label="Vider le panier">Vider le panier</button>
         </div>
     </main>
+    <!-- Section Cours Similaires (mobile) -->
+    <section class="similar-courses-section">
+        <h3>Ces cours pourraient vous intéresser</h3>
+        <div class="cards-grid">
+            <div class="mini-card">
+                <div class="mini-img">JS</div>
+                <h4>JavaScript Avancé</h4>
+                <p>39.99 €</p>
+                <button class="btn-add" onclick="addToCart('js-advanced', 'JavaScript Avancé', 39.99, '', 'Marc Leroy')">+</button>
+            </div>
+            <div class="mini-card">
+                <div class="mini-img" style="background-color: #e74c3c;">Agile</div>
+                <h4>Gestion de projet Agile</h4>
+                <p>29.99 €</p>
+                <button class="btn-add" onclick="addToCart('agile-101', 'Gestion de projet Agile', 29.99, '', 'Julie Moreau')">+</button>
+            </div>
+            <div class="mini-card">
+                <div class="mini-img" style="background-color: #9b59b6;">IA</div>
+                <h4>Intelligence Artificielle</h4>
+                <p>59.99 €</p>
+                <button class="btn-add" onclick="addToCart('ai-intro', 'Intelligence Artificielle', 59.99, '', 'Prof. Bernard')">+</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Bénéfices Premium (mobile) -->
+    <section class="premium-benefits-section">
+        <h3>Pourquoi passer Premium ?</h3>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <span class="benefit-icon">🎓</span>
+                <h4>Certificats reconnus</h4>
+                <p>Obtenez un diplôme officiel à la fin de chaque cours.</p>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-icon">⚡</span>
+                <h4>Accès illimité</h4>
+                <p>Accédez à tout le catalogue sans restriction.</p>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-icon">👥</span>
+                <h4>Mentorat privé</h4>
+                <p>Des sessions individuelles avec nos experts.</p>
+            </div>
+        </div>
+    </section>
     <!-- Footer -->
     <footer>
         <div class="footer-content">
