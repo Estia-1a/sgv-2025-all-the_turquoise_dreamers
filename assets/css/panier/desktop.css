@@ -202,6 +202,23 @@
     margin-top: 15px;
 }
 
+/* Bouton vider le panier (desktop) */
+.btn-clear-cart {
+    width: 100%;
+    border: 1px solid #e74c3c;
+    background: white;
+    color: #e74c3c;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.btn-clear-cart:hover {
+    background: #e74c3c;
+    color: white;
+}
+
 /* --- Cours Similaires --- */
 .similar-courses-section {
     margin-bottom: 50px;
