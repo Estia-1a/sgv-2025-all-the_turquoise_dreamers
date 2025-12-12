@@ -1,0 +1,255 @@
+/* =========================================
+   Styles Spécifiques Panier Mobile
+   ========================================= */
+
+/* Layout général mobile */
+.cart-main {
+    padding: 1rem;
+}
+
+.cart-main h2 {
+    font-size: 1.5rem;
+    color: #1f3b57;
+    margin-bottom: 1.5rem;
+}
+
+/* Cartes de cours dans le panier (mobile) */
+.cart-course-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 1rem;
+}
+
+.cart-course-card .course-image {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: white;
+    font-size: 3rem;
+}
+
+.cart-course-card .category-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #2c3e50;
+    padding: 3px 10px;
+    border-radius: 16px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.cart-course-card .course-icon {
+    font-size: 3rem;
+}
+
+.cart-course-card .course-content {
+    padding: 1rem;
+}
+
+.cart-course-card .course-content h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.cart-course-card .course-author {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+}
+
+.cart-course-card .course-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.cart-course-card .rating {
+    color: #f39c12;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.cart-course-card .level {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.cart-course-card .level.beginner {
+    background: #d5f4e6;
+    color: #27ae60;
+}
+
+.cart-course-card .level.intermediate {
+    background: #ffeaa7;
+    color: #e67e22;
+}
+
+.cart-course-card .level.advanced {
+    background: #ffcdd2;
+    color: #e74c3c;
+}
+
+.cart-course-card .course-price {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.cart-course-card .price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.cart-course-card .unit-label {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+.cart-course-card .total-price {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #27ae60;
+    margin-left: auto;
+}
+
+.cart-course-card .cart-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cart-course-card .btn-qty {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid #3498db;
+    background: white;
+    color: #3498db;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cart-course-card .btn-qty:active {
+    background: #3498db;
+    color: white;
+}
+
+.cart-course-card .btn-minus {
+    border-color: #e74c3c;
+    color: #e74c3c;
+}
+
+.cart-course-card .btn-minus:active {
+    background: #e74c3c;
+    color: white;
+}
+
+.cart-course-card .qty-display {
+    min-width: 36px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #2c3e50;
+}
+
+.cart-course-card .btn-remove {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid #95a5a6;
+    background: white;
+    color: #95a5a6;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: auto;
+}
+
+.cart-course-card .btn-remove:active {
+    background: #e74c3c;
+    border-color: #e74c3c;
+    color: white;
+}
+
+/* Message panier vide */
+.cart-empty {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #7f8c8d;
+}
+
+/* Résumé de commande mobile */
+.cart-summary {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    margin-top: 1.5rem;
+}
+
+.cart-summary h3 {
+    margin-top: 0;
+    color: #1f3b57;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.summary-row.total {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    padding-top: 0.75rem;
+    border-top: 2px solid #eee;
+    margin-top: 0.75rem;
+}
+
+.btn-checkout {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-checkout:active {
+    transform: scale(0.98);
+}
+
+.secure-text {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    margin-top: 0.75rem;
+}

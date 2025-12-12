@@ -25,8 +25,8 @@
             </div>
             <div class="user-icons">
                 <a href="#" class="icon-btn icon-profile" title="Mon Profil">👤</a>
-                <a href="panier_desktop.html" class="icon-btn desktop-only" title="Mon Panier">🛒 <span class="badge">2</span></a>
-                <a href="panier_mobile.html" class="icon-btn mobile-only" title="Mon Panier">🛒 <span class="badge">2</span></a>
+                <a href="panier_desktop.html" class="icon-btn desktop-only" title="Mon Panier">🛒<span class="cart-badge">0</span></a>
+                <a href="panier_mobile.html" class="icon-btn mobile-only" title="Mon Panier">🛒<span class="cart-badge">0</span></a>
             </div>
         </div>
         <nav class="main-nav">
@@ -34,9 +34,9 @@
                 <li><a href="../index.html">Accueil</a></li>
                 <li><a href="cours.html">Cours</a></li>
                 <li><a href="#">Fonctionnalités</a></li>
-                <li><a href="#">Communauté</a></li>
+                <li><a href="chat.html">Discussions</a></li>
                 <li><a href="#">Tarifs</a></li>
-                <li><a href="#">Profil</a></li>
+                <li><a href="profile.html">Profil</a></li>
             </ul>
         </nav>
     </header>
@@ -46,54 +46,17 @@
         
         <h2 class="page-title">Mon Panier</h2>
 
+        <!-- Message panier vide -->
+        <div id="cart-empty-message" class="content-block" style="text-align: center; display: none;">
+            <h3>🛒 Votre panier est vide</h3>
+            <p>Découvrez nos cours et ajoutez-les à votre panier !</p>
+            <a href="cours.html" class="btn-checkout" style="display: inline-block; text-decoration: none; margin-top: 20px;">Voir les cours</a>
+        </div>
+
         <div class="cart-layout">
-            <!-- Colonne Gauche : Liste des produits -->
-            <section class="cart-items-section">
-                
-                <!-- Produit 1 -->
-                <article class="cart-item">
-                    <div class="item-image">
-                        <!-- Placeholder pour image de cours -->
-                        <div class="img-placeholder">Python</div>
-                    </div>
-                    <div class="item-details">
-                        <h3>Introduction à Python pour la Data Science</h3>
-                        <p class="author">Par Dr. Dupont</p>
-                        <div class="item-meta">
-                            <span class="rating">⭐ 4.8 (120 avis)</span>
-                            <span class="level">Débutant</span>
-                        </div>
-                    </div>
-                    <div class="item-price">
-                        <span class="current-price">49.99 €</span>
-                        <span class="old-price">89.99 €</span>
-                    </div>
-                    <div class="item-actions">
-                        <button class="btn-remove" title="Supprimer">🗑️</button>
-                    </div>
-                </article>
-
-                <!-- Produit 2 -->
-                <article class="cart-item">
-                    <div class="item-image">
-                        <div class="img-placeholder" style="background-color: #2ecc71;">UX/UI</div>
-                    </div>
-                    <div class="item-details">
-                        <h3>Masterclass UX/UI Design 2025</h3>
-                        <p class="author">Par Sarah Martin</p>
-                        <div class="item-meta">
-                            <span class="rating">⭐ 4.9 (85 avis)</span>
-                            <span class="level">Intermédiaire</span>
-                        </div>
-                    </div>
-                    <div class="item-price">
-                        <span class="current-price">79.99 €</span>
-                    </div>
-                    <div class="item-actions">
-                        <button class="btn-remove" title="Supprimer">🗑️</button>
-                    </div>
-                </article>
-
+            <!-- Colonne Gauche : Liste des produits (dynamique) -->
+            <section class="cart-items-section" id="cart-items-container">
+                <!-- Les articles seront injectés ici par JavaScript -->
             </section>
 
             <!-- Colonne Droite : Récapitulatif -->
@@ -102,19 +65,20 @@
                     <h3>Récapitulatif</h3>
                     <div class="summary-row">
                         <span>Sous-total</span>
-                        <span>129.98 €</span>
+                        <span id="cart-subtotal">0.00 €</span>
                     </div>
                     <div class="summary-row">
                         <span>TVA (20%)</span>
-                        <span>26.00 €</span>
+                        <span id="cart-tva">0.00 €</span>
                     </div>
                     <hr>
                     <div class="summary-row total">
                         <span>Total</span>
-                        <span>155.98 €</span>
+                        <span id="cart-total">0.00 €</span>
                     </div>
-                    <button class="btn-checkout">Payer maintenant</button>
+                    <a href="paiement.html" class="btn-checkout" style="display: block; text-align: center; text-decoration: none;">Payer maintenant</a>
                     <p class="secure-text">🔒 Paiement 100% sécurisé</p>
+                    <button onclick="clearCart()" class="btn-clear-cart">🗑️ Vider le panier</button>
                 </div>
             </aside>
         </div>
@@ -127,19 +91,19 @@
                     <div class="mini-img">JS</div>
                     <h4>JavaScript Avancé</h4>
                     <p>39.99 €</p>
-                    <button class="btn-add">+</button>
+                    <button class="btn-add" onclick="addToCart('js-advanced', 'JavaScript Avancé', 39.99, '', 'Marc Leroy')">+</button>
                 </div>
                 <div class="mini-card">
                     <div class="mini-img" style="background-color: #e74c3c;">Agile</div>
                     <h4>Gestion de projet Agile</h4>
                     <p>29.99 €</p>
-                    <button class="btn-add">+</button>
+                    <button class="btn-add" onclick="addToCart('agile-101', 'Gestion de projet Agile', 29.99, '', 'Julie Moreau')">+</button>
                 </div>
                 <div class="mini-card">
                     <div class="mini-img" style="background-color: #9b59b6;">IA</div>
                     <h4>Intelligence Artificielle</h4>
                     <p>59.99 €</p>
-                    <button class="btn-add">+</button>
+                    <button class="btn-add" onclick="addToCart('ai-intro', 'Intelligence Artificielle', 59.99, '', 'Prof. Bernard')">+</button>
                 </div>
             </div>
         </section>
@@ -193,5 +157,8 @@
         </div>
     </footer>
 
+    <!-- Script Panier -->
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/auth.js"></script>
 </body>
 </html>

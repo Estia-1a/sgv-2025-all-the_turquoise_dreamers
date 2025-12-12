@@ -1,17 +1,399 @@
+/* =========================================
+   ESTIA Learning - Page Cours Mobile
+   Design responsive < 768px
+   ========================================= */
+
+/* --- Variables de couleurs cohérentes --- */
+:root {
+    --primary-blue: #1f3b57;
+    --primary-light: #3498db;
+    --accent-green: #27ae60;
+    --accent-orange: #f39c12;
+    --text-dark: #2c3e50;
+    --text-muted: #7f8c8d;
+    --bg-light: #f8f9fa;
+    --bg-card: #ffffff;
+    --shadow-soft: 0 2px 12px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.12);
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+}
+
+/* --- Section Progression (Hero) --- */
+.progress-section {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.progress-container {
+    max-width: 100%;
+}
+
+.progress-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: white;
+}
+
+.progress-subtitle {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+.search-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.searchbar {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--text-dark);
+    box-shadow: var(--shadow-soft);
+    box-sizing: border-box;
+}
+
+.searchbar::placeholder {
+    color: var(--text-muted);
+}
+
+.searchbar:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+}
+
+.btn-resume {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    background: var(--accent-green);
+    color: white;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+/* --- Section Catalogue --- */
+.courses-catalog {
+    padding: 0 1rem 2rem;
+}
+
+.catalog-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.catalog-header h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.catalog-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--primary-light);
+    border-radius: 2px;
+}
+
+.courses-count {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* --- Grille de Cours --- */
+.courses-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* --- Carte de Cours --- */
+.course-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Image / Badge du cours */
+.course-image {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: white;
+    position: relative;
+}
+
+.course-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 100%);
+}
+
+.course-image span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Badge catégorie */
+.category-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--text-dark);
+    border-radius: 20px;
+    z-index: 2;
+}
+
+/* Contenu de la carte */
+.course-content {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.course-content h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0 0 0.4rem 0;
+    line-height: 1.4;
+}
+
+.course-author {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0 0 0.75rem 0;
+}
+
+/* Métadonnées du cours */
+.course-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: 600;
+    color: var(--accent-orange);
+    font-size: 0.85rem;
+}
+
+.level {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 20px;
+    background: var(--bg-light);
+    color: var(--text-muted);
+}
+
+.level.beginner {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.level.intermediate {
+    background: #fff3e0;
+    color: #ef6c00;
+}
+
+.level.advanced {
+    background: #fce4ec;
+    color: #c2185b;
+}
+
+/* Prix */
+.course-price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid #eee;
+}
+
+.price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.old-price {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+}
+
+.discount-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.4rem;
+    background: #ffebee;
+    color: #c62828;
+    border-radius: 4px;
+}
+
+/* Boutons + et - pour le panier */
+.cart-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+}
+
+.btn-qty {
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--primary-blue);
+    border-radius: 50%;
+    background: white;
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.btn-qty.btn-plus {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.btn-qty.btn-minus {
+    background: white;
+    color: var(--primary-blue);
+}
+
+.qty-display {
+    min-width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: var(--bg-light);
+    border-radius: 6px;
+    padding: 0 0.4rem;
+}
+
+.qty-display.has-items {
+    background: #e8f5e9;
+    color: #27ae60;
+}
+
+/* --- Footer amélioré --- */
+footer {
+    background: var(--primary-blue);
+    color: white;
+    margin-top: 2rem;
+}
+
+footer .footer-content {
+    padding: 2.5rem 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+footer .footer-col h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+footer .footer-col p,
+footer .footer-col li,
+footer .footer-col a {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+footer .footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer .footer-bottom {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1.25rem 1rem;
+    text-align: center;
+}
+
+footer .footer-bottom p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+}
+
+/* --- Anciens styles conservés et améliorés --- */
 input {
     align-items: center;
     text-align: left;
-    border-radius: 20px 20px 20px 20px;
+    border-radius: 20px;
     background-color: transparent;
     width: 100%;
     box-sizing: border-box;
 }
 
-
 button {
-    text-align: left;
-    border-radius: 20px 20px 20px 20px;
-    background-color: #1f3b57;
+    text-align: center;
+    border-radius: 8px;
+    background-color: var(--primary-blue);
     width: 100%;
     box-sizing: border-box;
 }

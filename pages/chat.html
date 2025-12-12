@@ -2,23 +2,27 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Panier - ESTIA Learning</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - ESTIA Learning</title>
+    <!-- Global Styles -->
     <link rel="stylesheet" href="../assets/css/global/desktop.css" media="screen and (min-width: 768px)"> 
     <link rel="stylesheet" href="../assets/css/global/mobile.css" media="screen and (max-width: 767px)">
     <link rel="stylesheet" href="../assets/css/global/header.css">
-    <link rel="stylesheet" href="../assets/css/panier/desktop.css" media="screen and (min-width: 768px)">
-    <link rel="stylesheet" href="../assets/css/panier/mobile.css" media="screen and (max-width: 767px)">
+    <!-- Chat Specific Styles -->
+    <link rel="stylesheet" href="../assets/css/chat/desktop.css" media="screen and (min-width: 768px)">
+    <link rel="stylesheet" href="../assets/css/chat/mobile.css" media="screen and (max-width: 767px)">
 </head>
 <body>
+
     <!-- En-tête -->
     <header class="site-header">
         <div class="header-top">
             <div class="logo-container">
                 <h1>ESTIA Learning</h1>
-                <p>Plateforme d’apprentissage en ligne</p>
+                <p>Plateforme d'apprentissage en ligne</p>
             </div>
             <div class="user-icons">
-                <a href="#" class="icon-btn icon-profile" title="Mon Profil">👤</a>
+                <a href="profile.html" class="icon-btn icon-profile" title="Mon Profil">👤</a>
                 <a href="panier_desktop.html" class="icon-btn desktop-only" title="Mon Panier">🛒<span class="cart-badge">0</span></a>
                 <a href="panier_mobile.html" class="icon-btn mobile-only" title="Mon Panier">🛒<span class="cart-badge">0</span></a>
             </div>
@@ -28,44 +32,54 @@
                 <li><a href="../index.html">Accueil</a></li>
                 <li><a href="cours.html">Cours</a></li>
                 <li><a href="#">Fonctionnalités</a></li>
-                <li><a href="chat.html">Discussions</a></li>
+                <li><a href="chat.html" class="active">Discussions</a></li>
                 <li><a href="#">Tarifs</a></li>
                 <li><a href="profile.html">Profil</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Contenu principal du panier -->
-    <main class="cart-main">
-        <h2>Mon Panier</h2>
+    <!-- Contenu Principal -->
+    <main class="chat-page-wrapper">
         
-        <section id="cart-items-container">
-            <!-- Les produits seront générés dynamiquement par JavaScript -->
-        </section>
-        
-        <p id="cart-empty-message" class="cart-empty" style="display: none;">
-            Votre panier est vide. <a href="cours.html">Découvrez nos cours</a>
-        </p>
-        
-        <!-- Résumé de commande -->
-        <div class="cart-summary">
-            <h3>Résumé</h3>
-            <div class="summary-line">
-                <span>Sous-total</span>
-                <span id="cart-subtotal">0,00 €</span>
+        <!-- Header du Chat -->
+        <div class="chat-header">
+            <div>
+                <h2>💬 Chat ESTIA Learning</h2>
+                <div class="chat-info">
+                    <span class="status-online"></span>
+                    <span>Assistant en ligne</span>
+                </div>
             </div>
-            <div class="summary-line">
-                <span>TVA (20%)</span>
-                <span id="cart-tva">0,00 €</span>
+            <div class="chat-actions">
+                <button class="btn-action" id="clear-history-btn">🗑️ Effacer</button>
             </div>
-            <div class="summary-line total">
-                <span>Total</span>
-                <span id="cart-total">0,00 €</span>
-            </div>
-            <a href="paiement.html" class="btn-checkout">Passer au paiement</a>
-            <button onclick="clearCart()" class="btn-clear-cart">Vider le panier</button>
         </div>
+
+        <!-- Container du Chat -->
+        <div id="chat-container">
+            
+            <!-- Zone des Messages -->
+            <div id="messages">
+                <!-- Les messages seront injectés ici par JavaScript -->
+            </div>
+
+            <!-- Zone de Saisie -->
+            <div id="chat-input">
+                <input 
+                    type="text" 
+                    id="message-input" 
+                    placeholder="Écrivez votre message..." 
+                    autocomplete="off"
+                    maxlength="500"
+                />
+                <button id="send-btn">📤 Envoyer</button>
+            </div>
+
+        </div>
+
     </main>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -91,7 +105,9 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="../assets/js/cart.js"></script>
     <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/chat.js"></script>
 </body>
 </html>
