@@ -257,7 +257,8 @@ function calculateCartTotal() {
 function renderCartItems() {
     const cartContainer = document.getElementById('cart-items-container');
     const emptyMessage = document.getElementById('cart-empty-message');
-    const summarySection = document.querySelector('.cart-summary-section');
+    // Support both desktop (cart-summary-section) and mobile (cart-summary)
+    const summarySection = document.querySelector('.cart-summary-section') || document.querySelector('.cart-summary');
     
     if (!cartContainer) return; // N'exécute que sur la page panier
     
@@ -267,7 +268,9 @@ function renderCartItems() {
         // Panier vide
         cartContainer.innerHTML = '';
         if (emptyMessage) emptyMessage.style.display = 'block';
-        if (summarySection) summarySection.style.display = 'none';
+        if (summarySection) {
+            summarySection.style.display = 'none';
+        }
         return;
     }
     
