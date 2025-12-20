@@ -21,6 +21,10 @@
     --font-family-base: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
 }
 
+/* =========================================
+   BASE MOBILE - Règles communes
+   ========================================= */
+
 body {
     font-family: var(--font-family-base);
     background-color: var(--color-bg-secondary);
@@ -31,14 +35,44 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden; /* Empêche le scroll horizontal */
+    word-wrap: break-word; /* Gère les mots longs */
 }
 
+/* Conteneurs full-width sur mobile */
+* {
+    box-sizing: border-box;
+}
+
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Conteneurs de contenu */
 .content-block {
     background-color: var(--color-bg-primary);
     border-radius: var(--radius-lg);
     padding: var(--spacing-lg);
     margin-bottom: var(--spacing-lg);
     box-shadow: var(--shadow-sm);
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Sections principales */
+main {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+section {
+    width: 100%;
+    max-width: 100%;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
 }
 
 h1 {
@@ -126,37 +160,96 @@ a:focus {
 /* Tableaux responsive modernisés */
 table {
     width: 100%;
+    max-width: 100%;
     border-collapse: collapse;
     margin-top: var(--spacing-lg);
     margin-bottom: var(--spacing-lg);
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     background-color: var(--color-bg-primary);
     border-radius: var(--radius-md);
-    overflow: hidden;
+    overflow-x: auto;
+    display: block;
     box-shadow: var(--shadow-sm);
+}
+
+table thead,
+table tbody,
+table tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
 }
 
 th, td {
     border-bottom: 1px solid var(--color-border-light);
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-sm);
     text-align: left;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 th {
     background-color: var(--color-bg-tertiary);
     color: var(--color-text-primary);
     font-weight: 600;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
 td {
     color: var(--color-text-secondary);
+    font-size: 0.875rem;
 }
 
 tbody tr:last-child td {
     border-bottom: none;
+}
+
+/* Boutons optimisés mobile */
+button, .btn, input[type="submit"], input[type="button"] {
+    min-height: 44px; /* Zone tactile optimale */
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 200ms ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+button:active, .btn:active {
+    transform: scale(0.98);
+}
+
+/* Inputs optimisés mobile */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    min-height: 44px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1rem;
+    border: 2px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    -webkit-appearance: none;
+    appearance: none;
+    touch-action: manipulation;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 /* Pied de page moderne */
 footer {

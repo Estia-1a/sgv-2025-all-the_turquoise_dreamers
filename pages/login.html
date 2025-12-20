@@ -10,21 +10,32 @@
     <style>
         /* Styles spécifiques à la page de connexion */
         .login-wrapper {
-            min-height: 80vh;
+            min-height: calc(100vh - 120px);
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 2rem 1rem;
+            padding: 1rem;
+            margin: 0;
+            width: 100%;
+            max-width: 100vw;
+            box-sizing: border-box;
         }
 
         .login-container {
             background: white;
-            padding: 3rem 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             max-width: 450px;
             width: 100%;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 1.5rem 1.25rem;
+            }
         }
 
         .login-header {
@@ -34,14 +45,22 @@
 
         .login-header h1 {
             color: #1f3b57;
-            font-size: 2rem;
+            font-size: 1.75rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
+            line-height: 1.2;
         }
 
         .login-header p {
             color: #64748b;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 480px) {
+            .login-header h1 {
+                font-size: 1.5rem;
+            }
         }
 
         .login-form {
@@ -69,6 +88,11 @@
             font-size: 1rem;
             transition: all 0.3s ease;
             background: #f8fafc;
+            min-height: 44px;
+            width: 100%;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .form-group input:focus {
@@ -89,11 +113,19 @@
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 0.5rem;
+            min-height: 48px;
+            width: 100%;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .btn-login:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-login:active {
+            transform: scale(0.98);
         }
 
         .login-footer {

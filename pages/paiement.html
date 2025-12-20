@@ -12,41 +12,70 @@
     <style>
         .payment-main {
             max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
+            margin: 1rem auto;
+            padding: 0 1rem;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .payment-main h2 {
             color: #2c3e50;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 1.25rem;
+            font-size: 1.5rem;
+            line-height: 1.3;
         }
 
         .payment-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         @media (max-width: 768px) {
+            .payment-main {
+                padding: 0 0.75rem;
+                margin: 0.75rem auto;
+            }
+
+            .payment-main h2 {
+                font-size: 1.375rem;
+                margin-bottom: 1rem;
+            }
+
             .payment-container {
                 grid-template-columns: 1fr;
+                gap: 1.25rem;
             }
         }
 
         .payment-form {
             background: white;
-            padding: 1.5rem;
+            padding: 1.25rem;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .payment-form h3 {
             color: #2c3e50;
+            margin-top: 0;
             margin-bottom: 1rem;
-            font-size: 1.2rem;
+            font-size: 1.125rem;
             border-bottom: 2px solid #3498db;
             padding-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 768px) {
+            .payment-form {
+                padding: 1rem;
+            }
+
+            .payment-form h3 {
+                font-size: 1.0625rem;
+            }
         }
 
         .form-group {
@@ -63,39 +92,66 @@
         .form-group input,
         .form-group select {
             width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
+            padding: 0.875rem;
+            border: 2px solid #e2e8f0;
             border-radius: 8px;
             font-size: 1rem;
-            transition: border-color 0.3s;
+            transition: all 0.2s ease;
+            min-height: 44px;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #f8fafc;
         }
 
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
             border-color: #3498db;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 0.75rem;
+        }
+
+        @media (max-width: 480px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
 
         .order-summary {
             background: white;
-            padding: 1.5rem;
+            padding: 1.25rem;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             height: fit-content;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .order-summary h3 {
             color: #2c3e50;
+            margin-top: 0;
             margin-bottom: 1rem;
-            font-size: 1.2rem;
+            font-size: 1.125rem;
             border-bottom: 2px solid #3498db;
             padding-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 768px) {
+            .order-summary {
+                padding: 1rem;
+            }
+
+            .order-summary h3 {
+                font-size: 1.0625rem;
+            }
         }
 
         .order-items {
@@ -156,20 +212,28 @@
             color: white;
             border: none;
             border-radius: 8px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s;
-            margin-top: 1.5rem;
+            transition: all 0.2s ease;
+            margin-top: 1.25rem;
+            min-height: 48px;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .btn-pay:hover {
             background: #219a52;
         }
 
+        .btn-pay:active {
+            transform: scale(0.98);
+        }
+
         .btn-pay:disabled {
             background: #95a5a6;
             cursor: not-allowed;
+            transform: none;
         }
 
         .back-to-cart {
