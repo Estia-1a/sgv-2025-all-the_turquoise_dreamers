@@ -2,38 +2,151 @@
    Styles Spécifiques Panier Mobile (Améliorés)
    ========================================= */
 
+/* =========================================
+   OPTIMISATION HEADER MOBILE - Réduction drastique de la hauteur
+   ========================================= */
+
+/* Réduction du header-top sur mobile pour la page panier */
+body.cart-mobile-page .site-header .header-top {
+    padding: 0.5rem 1rem !important; /* Réduit de 0.875rem à 0.5rem */
+    min-height: auto !important;
+}
+
+/* Logo compact sur mobile */
+body.cart-mobile-page .site-header .logo-container {
+    gap: 0.05rem !important; /* Réduit l'espace entre titre et sous-titre */
+}
+
+body.cart-mobile-page .site-header .logo-container h1 {
+    font-size: 1.1rem !important; /* Réduit de 1.3rem à 1.1rem */
+    line-height: 1.1 !important;
+}
+
+body.cart-mobile-page .site-header .logo-container h1::before {
+    font-size: 0.95rem !important; /* Réduit l'emoji */
+}
+
+body.cart-mobile-page .site-header .logo-container p {
+    font-size: 0.65rem !important; /* Réduit de 0.7rem à 0.65rem */
+    display: none; /* Cache le sous-titre sur très petit écran */
+}
+
+/* Icônes utilisateur compactes */
+body.cart-mobile-page .site-header .icon-btn {
+    width: 36px !important; /* Réduit de 40px à 36px */
+    height: 36px !important;
+    font-size: 1rem !important; /* Réduit de 1.15rem */
+}
+
+/* Navigation compacte et collapsible */
+body.cart-mobile-page .site-header .main-nav {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    box-shadow: none;
+}
+
+body.cart-mobile-page .site-header .main-nav.nav-expanded {
+    max-height: 500px;
+    box-shadow: 0 2px 10px rgba(31, 59, 87, 0.15);
+}
+
+/* Bouton hamburger pour toggle navigation */
+body.cart-mobile-page .site-header .nav-toggle {
+    display: block;
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    background: linear-gradient(135deg, #1f3b57 0%, #2d4a6f 100%);
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.2s ease;
+}
+
+body.cart-mobile-page .site-header .nav-toggle:active {
+    transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Ajustement du header-top pour faire place au bouton */
+body.cart-mobile-page .site-header .header-top {
+    padding-right: 3.5rem !important; /* Espace pour le bouton hamburger */
+}
+
+/* Navigation en liste verticale compacte */
+body.cart-mobile-page .site-header .main-nav ul {
+    padding: 0.5rem !important;
+    gap: 0 !important;
+    flex-direction: column;
+}
+
+body.cart-mobile-page .site-header .main-nav a {
+    padding: 0.6rem 1rem !important; /* Réduit de 0.875rem */
+    font-size: 0.8rem !important; /* Réduit de 0.85rem */
+    border-radius: 6px;
+    margin-bottom: 0.25rem;
+}
+
+/* Cache la navigation par défaut sur très petit écran, visible via toggle */
+@media (max-width: 600px) {
+    body.cart-mobile-page .site-header .main-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, #1f3b57 0%, #2d4a6f 100%);
+        z-index: 999;
+        max-height: 0;
+    }
+    
+    body.cart-mobile-page .site-header .main-nav.nav-expanded {
+        max-height: 400px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+}
+
 /* Layout général mobile */
 .cart-main {
-    padding: 1rem 1.25rem; /* Augmentation du padding latéral */
+    padding: 0.75rem 1rem; /* Réduit le padding pour plus d'espace */
     background-color: #f8f9fa; /* Fond légèrement gris */
+    margin-top: 0; /* Supprime les marges inutiles */
 }
 
 .cart-main h2 {
-    font-size: 1.8rem; /* Taille augmentée pour le titre principal */
+    font-size: 1.4rem; /* Réduit de 1.8rem pour économiser l'espace */
     color: #1a3b5d; /* Couleur assombrie pour plus de contraste */
-    margin-bottom: 2rem;
-    text-align: center;
+    margin: 0.5rem 0 1rem 0; /* Réduit les marges */
+    text-align: left; /* Aligné à gauche pour économiser l'espace vertical */
+    font-weight: 700;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e0e0e0;
 }
 
 /* Cartes de cours dans le panier (mobile) */
 .cart-course-card {
     background: white;
-    border-radius: 16px; /* Bords plus arrondis */
+    border-radius: 12px; /* Réduit de 16px pour un look plus compact */
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07); /* Ombre plus douce */
-    margin-bottom: 1.5rem; /* Espacement augmenté */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); /* Ombre plus légère */
+    margin-bottom: 1rem; /* Réduit de 1.5rem pour économiser l'espace */
     display: flex; /* Utilisation de flex pour un layout plus robuste */
     flex-direction: column;
 }
 
 .cart-course-card .course-image {
-    height: 140px; /* Hauteur augmentée */
+    height: 100px; /* Réduit de 140px pour économiser l'espace vertical */
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     color: white;
-    font-size: 3.5rem; /* Icône plus grande */
+    font-size: 2.5rem; /* Réduit de 3.5rem */
 }
 
 .cart-course-card .category-badge {
@@ -215,17 +328,21 @@
 /* Résumé de commande mobile */
 .cart-summary {
     background: white;
-    padding: 1.5rem; /* Padding augmenté */
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    margin-top: 2rem;
+    padding: 1.25rem; /* Réduit de 1.5rem */
+    border-radius: 12px; /* Réduit de 16px */
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    margin-top: 1.5rem; /* Réduit de 2rem */
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
 }
 
 .cart-summary h3 {
     color: #1a3b5d;
-    font-size: 1.4rem; /* Titre plus grand */
-    margin-bottom: 1.5rem;
-    text-align: center;
+    font-size: 1.2rem; /* Réduit de 1.4rem */
+    margin-bottom: 1rem; /* Réduit de 1.5rem */
+    text-align: left; /* Aligné à gauche */
+    font-weight: 700;
 }
 
 .summary-row {
@@ -250,17 +367,18 @@
 
 .btn-checkout {
     width: 100%;
-    padding: 1.1rem;
+    padding: 0.95rem; /* Réduit de 1.1rem */
     background: linear-gradient(135deg, #28a745 0%, #218838 100%); /* Vert plus vibrant */
     color: white;
     border: none;
-    border-radius: 12px; /* Bords plus arrondis */
-    font-size: 1.1rem; /* Police plus grande */
+    border-radius: 10px; /* Réduit de 12px */
+    font-size: 1rem; /* Réduit de 1.1rem */
     font-weight: 700;
     cursor: pointer;
-    margin-top: 1.5rem;
-    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3); /* Ombre portée */
+    margin-top: 1rem; /* Réduit de 1.5rem */
+    box-shadow: 0 3px 10px rgba(40, 167, 69, 0.25); /* Ombre légèrement réduite */
     transition: all 0.3s ease;
+    min-height: 48px; /* Zone tactile optimale pour mobile */
 }
 
 .btn-checkout:active {
@@ -291,14 +409,15 @@
 
 /* --- Cours Similaires (mobile) --- */
 .similar-courses-section {
-    padding: 2rem 1.25rem;
+    padding: 1rem 1rem; /* Réduit de 2rem */
 }
 
 .similar-courses-section h3 {
-    text-align: center;
-    font-size: 1.4rem;
+    text-align: left; /* Aligné à gauche pour économiser l'espace */
+    font-size: 1.2rem; /* Réduit de 1.4rem */
     color: #1a3b5d;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem; /* Réduit de 1.5rem */
+    font-weight: 700;
 }
 
 .cards-grid {
@@ -360,16 +479,17 @@
 /* --- Bénéfices Premium (mobile) --- */
 .premium-benefits-section {
     background-color: #eaf6ff; /* Couleur de fond plus engageante */
-    padding: 2rem;
-    border-radius: 16px;
-    margin: 2rem 1.25rem;
+    padding: 1.25rem; /* Réduit de 2rem */
+    border-radius: 12px; /* Réduit de 16px */
+    margin: 1rem 1rem; /* Réduit de 2rem 1.25rem */
 }
 
 .premium-benefits-section h3 {
-    text-align: center;
-    font-size: 1.4rem;
+    text-align: left; /* Aligné à gauche */
+    font-size: 1.2rem; /* Réduit de 1.4rem */
     color: #1a3b5d;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem; /* Réduit de 1.5rem */
+    font-weight: 700;
 }
 
 .benefits-grid {

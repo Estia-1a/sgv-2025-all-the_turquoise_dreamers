@@ -406,6 +406,68 @@ function migrateCartData() {
 }
 
 /**
+ * Initialise le toggle de navigation mobile pour la page panier
+ */
+function initMobileNavToggle() {
+    // Vérifie si on est sur la page panier mobile
+    const cartMain = document.querySelector('.cart-main');
+    if (!cartMain) return;
+    
+    // Ajoute une classe au body pour cibler les styles CSS
+    document.body.classList.add('cart-mobile-page');
+    
+    const mainNav = document.querySelector('.main-nav');
+    if (!mainNav) return;
+    
+    // Crée le bouton hamburger si on est sur mobile
+    function setupNavToggle() {
+        const headerTop = document.querySelector('.header-top');
+        const existingToggle = document.querySelector('.nav-toggle');
+        
+        if (window.innerWidth <= 600) {
+            if (headerTop && !existingToggle) {
+                const toggleBtn = document.createElement('button');
+                toggleBtn.className = 'nav-toggle';
+                toggleBtn.setAttribute('aria-label', 'Toggle navigation');
+                toggleBtn.innerHTML = '☰';
+                headerTop.appendChild(toggleBtn);
+                
+                // Toggle navigation au clic
+                toggleBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    mainNav.classList.toggle('nav-expanded');
+                    toggleBtn.innerHTML = mainNav.classList.contains('nav-expanded') ? '✕' : '☰';
+                });
+                
+                // Ferme la navigation en cliquant ailleurs
+                document.addEventListener('click', function(e) {
+                    if (!mainNav.contains(e.target) && !toggleBtn.contains(e.target)) {
+                        mainNav.classList.remove('nav-expanded');
+                        toggleBtn.innerHTML = '☰';
+                    }
+                });
+            }
+        } else {
+            // Supprime le bouton sur desktop
+            const toggleBtn = document.querySelector('.nav-toggle');
+            if (toggleBtn) {
+                toggleBtn.remove();
+            }
+            mainNav.classList.remove('nav-expanded');
+        }
+    }
+    
+    setupNavToggle();
+    
+    // Réinitialise au redimensionnement
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(setupNavToggle, 150);
+    });
+}
+
+/**
  * Initialisation au chargement de la page
  */
 function initCart() {
@@ -413,6 +475,7 @@ function initCart() {
     updateCartBadge();
     updateCourseQuantities(); // Met à jour les quantités sur la page cours
     renderCartItems();
+    initMobileNavToggle(); // Initialise le toggle de navigation mobile
 }
 
 // Exécute l'initialisation au chargement du DOM
