@@ -23,13 +23,14 @@
 /* --- Section Progression (Hero) --- */
 .progress-section {
     background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
-    padding: var(--spacing-lg) var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
-    margin-left: calc(var(--spacing-md) * -1);
-    margin-right: calc(var(--spacing-md) * -1);
+    padding: var(--spacing-xl) var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    margin-left: 0;
+    margin-right: 0;
     color: white;
-    width: calc(100% + 2 * var(--spacing-md));
-    max-width: 100vw;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .progress-container {
@@ -61,7 +62,7 @@
 
 .searchbar {
     width: 100%;
-    padding: 0.875rem 1.125rem;
+    padding: var(--spacing-md) var(--spacing-lg);
     font-size: 1rem;
     border: none;
     border-radius: 50px;
@@ -69,9 +70,10 @@
     color: var(--text-dark);
     box-shadow: var(--shadow-soft);
     box-sizing: border-box;
-    min-height: 44px;
+    min-height: 48px;
     -webkit-appearance: none;
     appearance: none;
+    line-height: 1.5;
 }
 
 .searchbar::placeholder {

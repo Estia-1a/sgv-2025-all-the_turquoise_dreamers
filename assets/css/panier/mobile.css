@@ -116,10 +116,10 @@ body.cart-mobile-page .site-header .main-nav a {
     padding: var(--spacing-md);
     background-color: var(--color-bg-secondary);
     margin-top: 0;
-    margin-left: calc(var(--spacing-md) * -1);
-    margin-right: calc(var(--spacing-md) * -1);
-    width: calc(100% + 2 * var(--spacing-md));
-    max-width: 100vw;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    max-width: 100%;
     box-sizing: border-box;
 }
 
@@ -389,20 +389,23 @@ body.cart-mobile-page .site-header .main-nav a {
 
 .btn-checkout {
     width: 100%;
-    padding: var(--spacing-md);
+    padding: var(--spacing-lg) var(--spacing-md);
     background: linear-gradient(135deg, #28a745 0%, #218838 100%);
     color: white;
     border: none;
-    border-radius: var(--radius-md);
-    font-size: 1rem;
+    border-radius: var(--radius-lg);
+    font-size: 1.0625rem;
     font-weight: 700;
     cursor: pointer;
     margin-top: var(--spacing-md);
-    box-shadow: 0 3px 10px rgba(40, 167, 69, 0.25);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
     transition: all 200ms ease;
-    min-height: 48px;
+    min-height: 52px;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-checkout:active {
