@@ -255,6 +255,9 @@ function initMobileNavToggle() {
     
     if (!mainNav || !headerTop) return;
     
+    let toggleBtn = null;
+    let clickOutsideHandler = null;
+    
     // Fonction pour créer/supprimer le bouton hamburger selon la taille d'écran
     function setupNavToggle() {
         const existingToggle = document.querySelector('.nav-toggle');
@@ -262,44 +265,57 @@ function initMobileNavToggle() {
         
         if (isMobile) {
             // Sur mobile : créer le bouton s'il n'existe pas
-            if (!existingToggle) {
-                const toggleBtn = document.createElement('button');
+            if (!existingToggle && !toggleBtn) {
+                toggleBtn = document.createElement('button');
                 toggleBtn.className = 'nav-toggle';
                 toggleBtn.setAttribute('aria-label', 'Ouvrir le menu de navigation');
+                toggleBtn.setAttribute('aria-expanded', 'false');
                 toggleBtn.innerHTML = '☰ Menu';
-                toggleBtn.style.fontSize = '0.85rem';
-                toggleBtn.style.padding = '0.5rem 0.75rem';
+                toggleBtn.type = 'button';
                 headerTop.appendChild(toggleBtn);
                 
                 // Toggle navigation au clic
                 toggleBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
+                    e.preventDefault();
                     const isExpanded = mainNav.classList.contains('nav-expanded');
                     
                     if (isExpanded) {
                         mainNav.classList.remove('nav-expanded');
                         toggleBtn.innerHTML = '☰ Menu';
                         toggleBtn.setAttribute('aria-label', 'Ouvrir le menu de navigation');
+                        toggleBtn.setAttribute('aria-expanded', 'false');
                     } else {
                         mainNav.classList.add('nav-expanded');
                         toggleBtn.innerHTML = '✕ Fermer';
                         toggleBtn.setAttribute('aria-label', 'Fermer le menu de navigation');
+                        toggleBtn.setAttribute('aria-expanded', 'true');
                     }
                 });
                 
-                // Ferme la navigation en cliquant ailleurs
-                document.addEventListener('click', function(e) {
-                    if (!mainNav.contains(e.target) && !toggleBtn.contains(e.target)) {
+                // Ferme la navigation en cliquant ailleurs (une seule fois)
+                clickOutsideHandler = function(e) {
+                    if (mainNav && toggleBtn && !mainNav.contains(e.target) && !toggleBtn.contains(e.target)) {
                         mainNav.classList.remove('nav-expanded');
-                        toggleBtn.innerHTML = '☰ Menu';
-                        toggleBtn.setAttribute('aria-label', 'Ouvrir le menu de navigation');
+                        if (toggleBtn) {
+                            toggleBtn.innerHTML = '☰ Menu';
+                            toggleBtn.setAttribute('aria-label', 'Ouvrir le menu de navigation');
+                            toggleBtn.setAttribute('aria-expanded', 'false');
+                        }
                     }
-                });
+                };
+                
+                document.addEventListener('click', clickOutsideHandler, true);
             }
         } else {
             // Sur desktop : supprimer le bouton et réinitialiser le menu
             if (existingToggle) {
                 existingToggle.remove();
+                toggleBtn = null;
+            }
+            if (clickOutsideHandler) {
+                document.removeEventListener('click', clickOutsideHandler, true);
+                clickOutsideHandler = null;
             }
             mainNav.classList.remove('nav-expanded');
         }
