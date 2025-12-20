@@ -8,8 +8,8 @@
     margin: 0;
     width: 100%;
     max-width: 100vw;
-    height: calc(100vh - 80px);
-    min-height: calc(100vh - 80px);
+    height: calc(100vh - 100px);
+    min-height: calc(100vh - 100px);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -17,20 +17,26 @@
 
 .chat-header {
     border-radius: 0;
-    padding: var(--spacing-md);
+    padding: var(--spacing-lg);
     flex-shrink: 0;
     width: 100%;
+    background: linear-gradient(135deg, #1f3b57 0%, #2d4a6f 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .chat-header h2 {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     margin: 0;
     line-height: 1.3;
+    font-weight: 700;
+    color: white;
 }
 
 .chat-info {
-    font-size: 0.8rem;
-    margin-top: var(--spacing-xs);
+    font-size: 0.875rem;
+    margin-top: var(--spacing-sm);
+    opacity: 0.9;
 }
 
 #chat-container {
@@ -41,10 +47,11 @@
     flex-direction: column;
     overflow: hidden;
     width: 100%;
+    background: var(--color-bg-secondary);
 }
 
 #messages {
-    padding: var(--spacing-md) var(--spacing-sm);
+    padding: var(--spacing-lg) var(--spacing-md);
     flex: 1;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -52,86 +59,113 @@
 }
 
 .message {
-    max-width: 85%;
-    margin-bottom: var(--spacing-sm);
+    max-width: 80%;
+    margin-bottom: var(--spacing-lg);
 }
 
 .avatar {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    min-height: 32px;
-    font-size: 0.875rem;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    font-size: 1rem;
     flex-shrink: 0;
 }
 
 .message-text {
-    padding: 0.625rem 0.875rem;
-    border-radius: 16px;
-    font-size: 0.9rem;
-    line-height: 1.5;
+    padding: 0.875rem 1.125rem;
+    border-radius: 20px;
+    font-size: 1rem;
+    line-height: 1.6;
     word-wrap: break-word;
+    overflow-wrap: break-word;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .username {
-    font-size: 0.8rem;
-    margin-bottom: var(--spacing-xs);
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
 }
 
 .timestamp {
-    font-size: 0.7rem;
-    opacity: 0.7;
+    font-size: 0.75rem;
+    opacity: 0.65;
+    margin-top: var(--spacing-xs);
 }
 
 #chat-input {
-    padding: var(--spacing-md);
-    gap: var(--spacing-sm);
+    padding: var(--spacing-lg);
+    gap: var(--spacing-md);
     flex-shrink: 0;
     width: 100%;
-    border-top: 1px solid var(--color-border-light);
+    border-top: 2px solid var(--color-border-light);
+    background: white;
+    display: flex;
+    align-items: center;
 }
 
 #message-input {
-    padding: 0.75rem 1rem;
-    font-size: 0.95rem;
-    border-radius: 24px;
-    min-height: 44px;
+    padding: 0.875rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 28px;
+    min-height: 52px;
     flex: 1;
     -webkit-appearance: none;
     appearance: none;
+    border: 2px solid var(--color-border-light);
+    transition: all 200ms ease;
+}
+
+#message-input:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
 }
 
 #send-btn {
-    padding: 0.75rem 1.25rem;
-    font-size: 0.95rem;
-    border-radius: 24px;
-    min-height: 44px;
-    min-width: 80px;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 28px;
+    min-height: 52px;
+    min-width: 90px;
     flex-shrink: 0;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    color: white;
+    border: none;
 }
 
 #send-btn:active {
-    transform: scale(0.95);
+    transform: scale(0.96);
 }
 
 .empty-chat {
-    padding: var(--spacing-2xl) var(--spacing-lg);
+    padding: var(--spacing-2xl) var(--spacing-xl);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
 }
 
 .empty-icon {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-md);
+    font-size: 4rem;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.5;
 }
 
 .empty-chat h3 {
-    font-size: 1.125rem;
-    margin-bottom: var(--spacing-sm);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
 }
 
 .empty-chat p {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--color-text-muted);
+    line-height: 1.6;
+    max-width: 300px;
 }

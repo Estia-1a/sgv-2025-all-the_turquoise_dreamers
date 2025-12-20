@@ -302,16 +302,16 @@
 /* --- Responsive Design --- */
 @media (max-width: 768px) {
     .header-top {
-        padding: 0.875rem 1rem;
+        padding: 1rem 1.25rem;
     }
     
     .logo-title {
-        font-size: 1.4rem;
-        gap: 0.4rem;
+        font-size: 1.5rem;
+        gap: 0.5rem;
     }
     
     .logo-icon {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
     
     .logo-subtitle {
@@ -319,52 +319,54 @@
     }
     
     .icon-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.15rem;
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
     }
     
     .user-icons {
-        gap: 0.5rem;
+        gap: 0.625rem;
     }
     
     .main-nav ul {
-        padding: 0.5rem;
-        gap: 0.125rem;
+        padding: 0.75rem;
+        gap: 0.25rem;
     }
     
     .main-nav a {
-        padding: 0.7rem 1rem;
-        font-size: 0.85rem;
+        padding: 0.875rem 1.25rem;
+        font-size: 0.95rem;
     }
 }
 
 @media (max-width: 600px) {
     .header-top {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-        padding: 1rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        gap: 0.75rem;
+        padding: 1rem 1.25rem;
         position: relative;
     }
     
     .logo-container {
-        align-items: center;
-        text-align: center;
+        align-items: flex-start;
+        text-align: left;
     }
     
     .logo-title {
-        justify-content: center;
-        font-size: 1.25rem;
+        justify-content: flex-start;
+        font-size: 1.375rem;
     }
     
     .logo-icon {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
     
     .logo-subtitle {
-        font-size: 0.65rem;
-        text-align: center;
+        font-size: 0.625rem;
+        text-align: left;
     }
     
     /* Menu repliable sur mobile - Masqué par défaut */
@@ -382,19 +384,20 @@
     
     /* Menu déployé */
     .main-nav.nav-expanded {
-        max-height: 400px;
+        max-height: 500px;
     }
     
     .main-nav ul {
         flex-direction: column;
-        padding: 0.5rem;
-        gap: 0;
+        padding: 0.75rem;
+        gap: 0.25rem;
     }
     
     .main-nav a {
-        text-align: center;
-        padding: 0.875rem 1rem;
-        border-radius: 0;
+        text-align: left;
+        padding: 1rem 1.25rem;
+        border-radius: 8px;
+        font-size: 1rem;
     }
     
     .main-nav a::after {
@@ -402,7 +405,7 @@
     }
     
     .main-nav li:not(:last-child) a {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 0.125rem;
     }
     
     /* Bouton hamburger pour toggle menu */
@@ -411,17 +414,18 @@
         align-items: center;
         justify-content: center;
         position: absolute;
-        top: 1rem;
-        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 1.25rem;
         background: var(--nav-bg);
         border: none;
         color: white;
-        font-size: 0.85rem;
+        font-size: 0.875rem;
         font-weight: 500;
-        padding: 0.5rem 0.75rem;
+        padding: 0.625rem 0.875rem;
         min-width: auto;
         height: auto;
-        border-radius: 6px;
+        border-radius: 8px;
         cursor: pointer;
         z-index: 1001;
         transition: all 0.2s ease;
@@ -429,12 +433,12 @@
     }
     
     .nav-toggle:active {
-        transform: scale(0.95);
+        transform: translateY(-50%) scale(0.95);
         background: rgba(255, 255, 255, 0.2);
     }
     
     /* Ajustement du header-top pour faire place au bouton */
     .header-top {
-        padding-right: 5.5rem;
+        padding-right: 6.5rem;
     }
 }

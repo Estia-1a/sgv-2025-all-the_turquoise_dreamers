@@ -1,119 +1,11 @@
 /* =========================================
-   Styles Spécifiques Panier Mobile (Améliorés)
+   Styles Panier Mobile - ESTIA Learning
+   Refonte complète mobile-first
    ========================================= */
-
-/* =========================================
-   OPTIMISATION HEADER MOBILE - Réduction drastique de la hauteur
-   ========================================= */
-
-/* Réduction du header-top sur mobile pour la page panier */
-body.cart-mobile-page .site-header .header-top {
-    padding: 0.5rem 1rem !important; /* Réduit de 0.875rem à 0.5rem */
-    min-height: auto !important;
-}
-
-/* Logo compact sur mobile */
-body.cart-mobile-page .site-header .logo-container {
-    gap: 0.05rem !important; /* Réduit l'espace entre titre et sous-titre */
-}
-
-body.cart-mobile-page .site-header .logo-container h1 {
-    font-size: 1.1rem !important; /* Réduit de 1.3rem à 1.1rem */
-    line-height: 1.1 !important;
-}
-
-body.cart-mobile-page .site-header .logo-container h1::before {
-    font-size: 0.95rem !important; /* Réduit l'emoji */
-}
-
-body.cart-mobile-page .site-header .logo-container p {
-    font-size: 0.65rem !important; /* Réduit de 0.7rem à 0.65rem */
-    display: none; /* Cache le sous-titre sur très petit écran */
-}
-
-/* Icônes utilisateur compactes */
-body.cart-mobile-page .site-header .icon-btn {
-    width: 36px !important; /* Réduit de 40px à 36px */
-    height: 36px !important;
-    font-size: 1rem !important; /* Réduit de 1.15rem */
-}
-
-/* Navigation compacte et collapsible */
-body.cart-mobile-page .site-header .main-nav {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    box-shadow: none;
-}
-
-body.cart-mobile-page .site-header .main-nav.nav-expanded {
-    max-height: 500px;
-    box-shadow: 0 2px 10px rgba(31, 59, 87, 0.15);
-}
-
-/* Bouton hamburger pour toggle navigation */
-body.cart-mobile-page .site-header .nav-toggle {
-    display: block;
-    position: absolute;
-    top: 0.5rem;
-    right: 1rem;
-    background: linear-gradient(135deg, #1f3b57 0%, #2d4a6f 100%);
-    border: none;
-    color: white;
-    font-size: 1.2rem;
-    width: 36px;
-    height: 36px;
-    border-radius: 6px;
-    cursor: pointer;
-    z-index: 1001;
-    transition: all 0.2s ease;
-}
-
-body.cart-mobile-page .site-header .nav-toggle:active {
-    transform: scale(0.95);
-    background: rgba(255, 255, 255, 0.2);
-}
-
-/* Ajustement du header-top pour faire place au bouton */
-body.cart-mobile-page .site-header .header-top {
-    padding-right: 3.5rem !important; /* Espace pour le bouton hamburger */
-}
-
-/* Navigation en liste verticale compacte */
-body.cart-mobile-page .site-header .main-nav ul {
-    padding: 0.5rem !important;
-    gap: 0 !important;
-    flex-direction: column;
-}
-
-body.cart-mobile-page .site-header .main-nav a {
-    padding: 0.6rem 1rem !important; /* Réduit de 0.875rem */
-    font-size: 0.8rem !important; /* Réduit de 0.85rem */
-    border-radius: 6px;
-    margin-bottom: 0.25rem;
-}
-
-/* Cache la navigation par défaut sur très petit écran, visible via toggle */
-@media (max-width: 600px) {
-    body.cart-mobile-page .site-header .main-nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: linear-gradient(135deg, #1f3b57 0%, #2d4a6f 100%);
-        z-index: 999;
-        max-height: 0;
-    }
-    
-    body.cart-mobile-page .site-header .main-nav.nav-expanded {
-        max-height: 400px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-}
 
 /* Layout général mobile */
 .cart-main {
-    padding: var(--spacing-md);
+    padding: var(--spacing-lg);
     background-color: var(--color-bg-secondary);
     margin-top: 0;
     margin-left: 0;
@@ -121,95 +13,103 @@ body.cart-mobile-page .site-header .main-nav a {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+    min-height: calc(100vh - 200px);
 }
 
 .cart-main h2 {
-    font-size: clamp(1.25rem, 3.5vw, 1.4rem);
+    font-size: clamp(1.5rem, 4vw, 1.75rem);
     color: #1a3b5d;
-    margin: 0.5rem 0 1rem 0;
+    margin: 0 0 var(--spacing-xl) 0;
     text-align: left;
     font-weight: 700;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #e0e0e0;
-    line-height: 1.3;
+    padding-bottom: var(--spacing-md);
+    border-bottom: 3px solid #e0e0e0;
+    line-height: 1.25;
 }
 
 /* Cartes de cours dans le panier (mobile) */
 .cart-course-card {
     background: white;
-    border-radius: 12px; /* Réduit de 16px pour un look plus compact */
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); /* Ombre plus légère */
-    margin-bottom: 1rem; /* Réduit de 1.5rem pour économiser l'espace */
-    display: flex; /* Utilisation de flex pour un layout plus robuste */
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: var(--spacing-xl);
+    display: flex;
     flex-direction: column;
+    transition: all 200ms ease;
+}
+
+.cart-course-card:active {
+    transform: scale(0.98);
 }
 
 .cart-course-card .course-image {
-    height: 100px; /* Réduit de 140px pour économiser l'espace vertical */
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     color: white;
-    font-size: 2.5rem; /* Réduit de 3.5rem */
+    font-size: 3rem;
 }
 
 .cart-course-card .category-badge {
     position: absolute;
-    top: 12px;
-    left: 12px;
+    top: var(--spacing-md);
+    left: var(--spacing-md);
     background: rgba(255, 255, 255, 1);
     color: #2c3e50;
-    padding: 4px 12px;
+    padding: 0.375rem var(--spacing-md);
     border-radius: 20px;
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     font-weight: 700;
 }
 
 .cart-course-card .course-icon {
-    font-size: 3.5rem;
+    font-size: 3rem;
 }
 
 .cart-course-card .course-content {
-    padding: 1.25rem; /* Padding augmenté */
+    padding: var(--spacing-xl);
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
 .cart-course-card .course-content h3 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.1rem; /* Taille de police augmentée */
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: 1.1875rem;
     color: #1a3b5d;
     font-weight: 700;
+    line-height: 1.35;
 }
 
 .cart-course-card .course-author {
-    margin: 0 0 1rem 0; /* Marge augmentée */
-    font-size: 0.9rem;
+    margin: 0 0 var(--spacing-lg) 0;
+    font-size: 0.9375rem;
     color: #8c98a7;
+    line-height: 1.5;
 }
 
 .cart-course-card .course-meta {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--spacing-md);
     flex-wrap: wrap;
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacing-lg);
     color: #5a6877;
 }
 
 .cart-course-card .rating {
     color: #f5b301;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.9375rem;
 }
 
 .cart-course-card .level {
-    padding: 4px 10px;
+    padding: 0.375rem var(--spacing-md);
     border-radius: 999px;
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.02em;
@@ -233,24 +133,24 @@ body.cart-mobile-page .site-header .main-nav a {
 .cart-course-card .course-price {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
     flex-wrap: wrap;
 }
 
 .cart-course-card .price {
-    font-size: clamp(1.125rem, 3vw, 1.3rem);
+    font-size: clamp(1.25rem, 3.5vw, 1.375rem);
     font-weight: 700;
     color: #1a3b5d;
 }
 
 .cart-course-card .unit-label {
-    font-size: clamp(0.85rem, 2.2vw, 0.9rem);
+    font-size: clamp(0.9375rem, 2.5vw, 1rem);
     color: #5a6877;
 }
 
 .cart-course-card .total-price {
-    font-size: clamp(0.95rem, 2.5vw, 1rem);
+    font-size: clamp(1.0625rem, 3vw, 1.125rem);
     font-weight: 700;
     color: #28a745;
     margin-left: auto;
@@ -259,22 +159,22 @@ body.cart-mobile-page .site-header .main-nav a {
 .cart-course-card .cart-actions {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-top: auto; /* Aligne les actions en bas */
-    padding-top: 1rem;
-    border-top: 1px solid #f0f2f5;
+    gap: var(--spacing-lg);
+    margin-top: auto;
+    padding-top: var(--spacing-lg);
+    border-top: 2px solid #f0f2f5;
 }
 
 .cart-course-card .btn-qty {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    min-height: 40px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     border-radius: var(--radius-md);
     border: 2px solid #3498db;
     background: white;
     color: #3498db;
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     font-weight: 700;
     cursor: pointer;
     transition: all 200ms ease;
@@ -286,6 +186,7 @@ body.cart-mobile-page .site-header .main-nav a {
 }
 
 .cart-course-card .btn-qty:active {
+    transform: scale(0.92);
     background: #3498db;
     color: white;
 }
@@ -301,23 +202,23 @@ body.cart-mobile-page .site-header .main-nav a {
 }
 
 .cart-course-card .qty-display {
-    min-width: 38px;
+    min-width: 40px;
     text-align: center;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 1.0625rem;
     color: #1a3b5d;
 }
 
 .cart-course-card .btn-remove {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    min-height: 40px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     border-radius: var(--radius-md);
     border: 2px solid #bdc3c7;
     background: white;
     color: #7f8c8d;
-    font-size: 1rem;
+    font-size: 1.125rem;
     cursor: pointer;
     transition: all 200ms ease;
     margin-left: auto;
@@ -333,35 +234,44 @@ body.cart-mobile-page .site-header .main-nav a {
     background: #e74c3c;
     border-color: #e74c3c;
     color: white;
+    transform: scale(0.92);
 }
 
 /* Message panier vide */
 .cart-empty {
     text-align: center;
-    padding: 3rem 1rem;
+    padding: var(--spacing-2xl) var(--spacing-xl);
     color: #7f8c8d;
     background-color: #fff;
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.cart-empty a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    font-weight: 600;
 }
 
 /* Résumé de commande mobile */
 .cart-summary {
     background: white;
-    padding: 1.25rem; /* Réduit de 1.5rem */
-    border-radius: 12px; /* Réduit de 16px */
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    margin-top: 1.5rem; /* Réduit de 2rem */
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    margin-top: var(--spacing-2xl);
     position: sticky;
-    bottom: 0;
+    bottom: var(--spacing-md);
     z-index: 10;
 }
 
 .cart-summary h3 {
     color: #1a3b5d;
-    font-size: clamp(1.125rem, 3vw, 1.2rem);
+    font-size: clamp(1.25rem, 3.5vw, 1.375rem);
     margin-top: 0;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
     text-align: left;
     font-weight: 700;
     line-height: 1.3;
@@ -370,37 +280,42 @@ body.cart-mobile-page .site-header .main-nav a {
 .summary-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1rem;
-    font-size: 1rem;
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.0625rem;
 }
 
 .summary-row span:first-child {
-    color: #5a6877; /* Couleur adoucie */
+    color: #5a6877;
+}
+
+.summary-row span:last-child {
+    font-weight: 600;
+    color: #1a3b5d;
 }
 
 .summary-row.total {
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.375rem;
     color: #1a3b5d;
-    padding-top: 1rem;
+    padding-top: var(--spacing-lg);
     border-top: 2px solid #f0f2f5;
-    margin-top: 1rem;
+    margin-top: var(--spacing-lg);
 }
 
 .btn-checkout {
     width: 100%;
-    padding: var(--spacing-lg) var(--spacing-md);
+    padding: var(--spacing-lg) var(--spacing-xl);
     background: linear-gradient(135deg, #28a745 0%, #218838 100%);
     color: white;
     border: none;
     border-radius: var(--radius-lg);
-    font-size: 1.0625rem;
+    font-size: 1.125rem;
     font-weight: 700;
     cursor: pointer;
-    margin-top: var(--spacing-md);
+    margin-top: var(--spacing-lg);
     box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
     transition: all 200ms ease;
-    min-height: 52px;
+    min-height: 56px;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
     display: flex;
@@ -409,54 +324,52 @@ body.cart-mobile-page .site-header .main-nav a {
 }
 
 .btn-checkout:active {
-    transform: scale(0.98);
-    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
-}
-
-.btn-checkout:active {
     transform: scale(0.98) translateY(1px);
     box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
 }
 
-/* Bouton vider le panier (style amélioré) */
+/* Bouton vider le panier */
 .btn-clear-cart {
     width: 100%;
-    border: 2px solid #bdc3c7; /* Bordure plus visible */
+    border: 2px solid #bdc3c7;
     background: transparent;
-    color: #7f8c8d; /* Couleur de texte sobre */
-    padding: 0.9rem;
-    border-radius: 12px;
-    margin-top: 1rem;
+    color: #7f8c8d;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    margin-top: var(--spacing-md);
     cursor: pointer;
     font-weight: 600;
-    transition: all 0.3s ease;
+    font-size: 1rem;
+    transition: all 200ms ease;
+    min-height: 52px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
-.btn-clear-cart:hover, .btn-clear-cart:active {
-    background: #e74c3c; /* Change au survol/clic pour indiquer une action destructive */
+.btn-clear-cart:hover,
+.btn-clear-cart:active {
+    background: #e74c3c;
     color: white;
     border-color: #e74c3c;
-    transform: scale(0.99);
+    transform: scale(0.98);
 }
 
 /* --- Cours Similaires (mobile) --- */
 .similar-courses-section {
-    padding: var(--spacing-lg) var(--spacing-md);
+    padding: var(--spacing-2xl) var(--spacing-lg);
     width: 100%;
     max-width: 100%;
-    margin-left: calc(var(--spacing-md) * -1);
-    margin-right: calc(var(--spacing-md) * -1);
-    padding-left: var(--spacing-md);
-    padding-right: var(--spacing-md);
+    margin: 0;
     box-sizing: border-box;
+    background: var(--color-bg-secondary);
 }
 
 .similar-courses-section h3 {
     text-align: left;
-    font-size: 1.125rem;
+    font-size: 1.375rem;
     color: #1a3b5d;
     margin-top: 0;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
     font-weight: 700;
     line-height: 1.3;
 }
@@ -464,7 +377,7 @@ body.cart-mobile-page .site-header .main-nav a {
 .cards-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
     width: 100%;
     max-width: 100%;
 }
@@ -472,12 +385,12 @@ body.cart-mobile-page .site-header .main-nav a {
 .mini-card {
     background: #fff;
     border: 1px solid #e8eaed;
-    border-radius: var(--radius-md);
-    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
     display: flex;
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: transform 200ms ease;
     width: 100%;
     box-sizing: border-box;
@@ -489,24 +402,32 @@ body.cart-mobile-page .site-header .main-nav a {
 }
 
 .mini-img {
-    width: 50px; /* Taille ajustée */
-    height: 50px;
-    border-radius: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-md);
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    font-size: 0.875rem;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
 }
 
 .mini-card h4 {
-    margin: 0;
-    font-size: 0.95rem;
+    margin: 0 0 var(--spacing-xs) 0;
+    font-size: 1.0625rem;
     font-weight: 600;
     color: #34495e;
+    line-height: 1.35;
 }
 
 .mini-card p {
     margin: 0;
     color: #27ae60;
-    font-weight: bold;
-    font-size: 0.9rem;
+    font-weight: 700;
+    font-size: 1rem;
 }
 
 .btn-add {
@@ -514,10 +435,10 @@ body.cart-mobile-page .site-header .main-nav a {
     background: #eaf6ff;
     border: none;
     border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    min-height: 44px;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
     cursor: pointer;
     color: #3498db;
     font-size: 1.5rem;
@@ -528,10 +449,11 @@ body.cart-mobile-page .site-header .main-nav a {
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
     flex-shrink: 0;
+    font-weight: 600;
 }
 
 .btn-add:active {
-    transform: scale(0.9);
+    transform: scale(0.92);
     background: #3498db;
     color: white;
 }
@@ -539,20 +461,20 @@ body.cart-mobile-page .site-header .main-nav a {
 /* --- Bénéfices Premium (mobile) --- */
 .premium-benefits-section {
     background-color: #eaf6ff;
-    padding: var(--spacing-lg) var(--spacing-md);
+    padding: var(--spacing-2xl) var(--spacing-lg);
     border-radius: var(--radius-lg);
-    margin: var(--spacing-md);
-    width: calc(100% - 2 * var(--spacing-md));
+    margin: var(--spacing-lg);
+    width: calc(100% - 2 * var(--spacing-lg));
     max-width: 100%;
     box-sizing: border-box;
 }
 
 .premium-benefits-section h3 {
     text-align: left;
-    font-size: 1.125rem;
+    font-size: 1.375rem;
     color: #1a3b5d;
     margin-top: 0;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
     font-weight: 700;
     line-height: 1.3;
 }
@@ -560,32 +482,40 @@ body.cart-mobile-page .site-header .main-nav a {
 .benefits-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-xl);
     width: 100%;
     max-width: 100%;
 }
 
 .benefit-item {
     display: flex;
-    gap: 1rem;
-    align-items: center;
+    gap: var(--spacing-lg);
+    align-items: flex-start;
     text-align: left;
 }
 
 .benefit-icon {
-    font-size: 2rem;
-    background: rgba(255,255,255,0.5);
-    padding: 0.5rem;
+    font-size: 2.5rem;
+    background: rgba(255, 255, 255, 0.6);
+    padding: var(--spacing-md);
     border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.benefit-item div {
+    flex: 1;
 }
 
 .benefit-item h4 {
-    margin: 0 0 0.25rem 0;
+    margin: 0 0 var(--spacing-sm) 0;
     color: #1a3b5d;
+    font-size: 1.0625rem;
+    font-weight: 600;
 }
 
 .benefit-item p {
     margin: 0;
     color: #5a6877;
-    font-size: 0.9rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
 }
