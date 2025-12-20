@@ -298,10 +298,29 @@
         text-align: center;
         gap: 1rem;
         padding: 1rem;
+        position: relative;
     }
     
     .logo-container {
         align-items: center;
+    }
+    
+    /* Menu repliable sur mobile - Masqué par défaut */
+    .main-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 999;
+    }
+    
+    /* Menu déployé */
+    .main-nav.nav-expanded {
+        max-height: 400px;
     }
     
     .main-nav ul {
@@ -322,5 +341,38 @@
     
     .main-nav li:not(:last-child) a {
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Bouton hamburger pour toggle menu */
+    .nav-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: var(--nav-bg);
+        border: none;
+        color: white;
+        font-size: 0.85rem;
+        font-weight: 500;
+        padding: 0.5rem 0.75rem;
+        min-width: auto;
+        height: auto;
+        border-radius: 6px;
+        cursor: pointer;
+        z-index: 1001;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+    }
+    
+    .nav-toggle:active {
+        transform: scale(0.95);
+        background: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Ajustement du header-top pour faire place au bouton */
+    .header-top {
+        padding-right: 5.5rem;
     }
 }

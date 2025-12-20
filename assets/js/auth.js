@@ -246,12 +246,84 @@ function displayUserProfile() {
 }
 
 /**
+ * Initialise le toggle de navigation mobile (menu repliable)
+ * Fonction globale réutilisable sur toutes les pages
+ */
+function initMobileNavToggle() {
+    const mainNav = document.querySelector('.main-nav');
+    const headerTop = document.querySelector('.header-top');
+    
+    if (!mainNav || !headerTop) return;
+    
+    // Fonction pour créer/supprimer le bouton hamburger selon la taille d'écran
+    function setupNavToggle() {
+        const existingToggle = document.querySelector('.nav-toggle');
+        const isMobile = window.innerWidth <= 600;
+        
+        if (isMobile) {
+            // Sur mobile : créer le bouton s'il n'existe pas
+            if (!existingToggle) {
+                const toggleBtn = document.createElement('button');
+                toggleBtn.className = 'nav-toggle';
+                toggleBtn.setAttribute('aria-label', 'Ouvrir le menu de navigation');
+                toggleBtn.innerHTML = '☰ Menu';
+                toggleBtn.style.fontSize = '0.85rem';
+                toggleBtn.style.padding = '0.5rem 0.75rem';
+                headerTop.appendChild(toggleBtn);
+                
+                // Toggle navigation au clic
+                toggleBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const isExpanded = mainNav.classList.contains('nav-expanded');
+                    
+                    if (isExpanded) {
+                        mainNav.classList.remove('nav-expanded');
+                        toggleBtn.innerHTML = '☰ Menu';
+                        toggleBtn.setAttribute('aria-label', 'Ouvrir le menu de navigation');
+                    } else {
+                        mainNav.classList.add('nav-expanded');
+                        toggleBtn.innerHTML = '✕ Fermer';
+                        toggleBtn.setAttribute('aria-label', 'Fermer le menu de navigation');
+                    }
+                });
+                
+                // Ferme la navigation en cliquant ailleurs
+                document.addEventListener('click', function(e) {
+                    if (!mainNav.contains(e.target) && !toggleBtn.contains(e.target)) {
+                        mainNav.classList.remove('nav-expanded');
+                        toggleBtn.innerHTML = '☰ Menu';
+                        toggleBtn.setAttribute('aria-label', 'Ouvrir le menu de navigation');
+                    }
+                });
+            }
+        } else {
+            // Sur desktop : supprimer le bouton et réinitialiser le menu
+            if (existingToggle) {
+                existingToggle.remove();
+            }
+            mainNav.classList.remove('nav-expanded');
+        }
+    }
+    
+    // Initialisation au chargement
+    setupNavToggle();
+    
+    // Réinitialise au redimensionnement avec debounce
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(setupNavToggle, 150);
+    });
+}
+
+/**
  * Initialisation au chargement de la page
  */
 function initAuth() {
     updateHeaderAuth();
     attachLoginListeners();
     attachLogoutListeners();
+    initMobileNavToggle(); // Initialise le menu mobile repliable
     
     // Si on est sur la page profile, affiche les infos
     if (window.location.pathname.includes('profile.html')) {
