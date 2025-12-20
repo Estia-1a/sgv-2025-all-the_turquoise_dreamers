@@ -55,17 +55,21 @@ img, video, iframe {
     border-radius: var(--radius-lg);
     padding: var(--spacing-lg);
     margin-bottom: var(--spacing-lg);
+    margin-left: calc(var(--spacing-md) * -1);
+    margin-right: calc(var(--spacing-md) * -1);
+    width: calc(100% + 2 * var(--spacing-md));
+    max-width: 100vw;
     box-shadow: var(--shadow-sm);
-    width: 100%;
-    max-width: 100%;
+    box-sizing: border-box;
 }
 
 /* Sections principales */
 main {
     width: 100%;
-    max-width: 100%;
+    max-width: 100vw;
     padding: 0;
     margin: 0;
+    overflow-x: hidden;
 }
 
 section {
@@ -73,15 +77,66 @@ section {
     max-width: 100%;
     padding-left: var(--spacing-md);
     padding-right: var(--spacing-md);
+    box-sizing: border-box;
+}
+
+/* Force l'empilement vertical pour toutes les grilles sur mobile */
+[class*="grid"] {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: var(--spacing-md) !important;
+}
+
+/* Empilement pour les layouts flex horizontaux */
+.flex-row,
+[class*="flex-row"],
+.d-flex:not(.flex-column) {
+    flex-direction: column !important;
+}
+
+/* Empilement pour les layouts multi-colonnes */
+[class*="col-"],
+.grid-2,
+.grid-3,
+.grid-4 {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 100% !important;
+}
+
+/* Media query pour garantir le mobile-first */
+@media (max-width: 767px) {
+    /* Force toutes les grilles en 1 colonne */
+    .courses-grid,
+    .cart-items-section,
+    .cards-grid,
+    .benefits-grid,
+    [class*="grid"] {
+        grid-template-columns: 1fr !important;
+        display: grid !important;
+    }
+    
+    /* Force l'empilement vertical */
+    .footer-content,
+    .profile-grid,
+    .payment-container {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    /* Empêche les largeurs fixes */
+    [style*="width"]:not([style*="100%"]) {
+        max-width: 100% !important;
+    }
 }
 
 h1 {
     color: var(--color-text-primary);
     margin-top: 0;
     margin-bottom: var(--spacing-md);
-    font-size: 1.75rem;
+    font-size: clamp(1.5rem, 4vw, 1.75rem);
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 1.3;
     letter-spacing: -0.01em;
 }
 
@@ -91,32 +146,35 @@ h2 {
     padding-bottom: var(--spacing-sm);
     margin-top: 0;
     margin-bottom: var(--spacing-lg);
-    font-size: 1.5rem;
+    font-size: clamp(1.25rem, 3.5vw, 1.5rem);
     font-weight: 600;
-    line-height: 1.3;
+    line-height: 1.4;
 }
 
 h3 {
     color: var(--color-text-primary);
     margin-top: 0;
     margin-bottom: var(--spacing-md);
-    font-size: 1.25rem;
+    font-size: clamp(1.125rem, 3vw, 1.25rem);
     font-weight: 600;
+    line-height: 1.4;
 }
 
 h4 {
     color: var(--color-text-primary);
     margin-top: 0;
     margin-bottom: var(--spacing-sm);
-    font-size: 1.125rem;
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
     font-weight: 600;
+    line-height: 1.5;
 }
 
 p {
     margin-top: 0;
     margin-bottom: var(--spacing-md);
     color: var(--color-text-secondary);
-    line-height: 1.6;
+    line-height: 1.7;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
 }
 
 .subtitle {
@@ -132,11 +190,13 @@ ul, ol {
     margin-bottom: var(--spacing-md);
     padding-left: var(--spacing-lg);
     color: var(--color-text-secondary);
-    line-height: 1.6;
+    line-height: 1.7;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
 }
 
 li {
     margin-bottom: var(--spacing-sm);
+    line-height: 1.7;
 }
 
 /* Liens améliorés */
@@ -157,7 +217,7 @@ a:focus {
     border-radius: 4px;
 }
 
-/* Tableaux responsive modernisés */
+/* Tableaux responsive modernisés - Format cartes sur mobile */
 table {
     width: 100%;
     max-width: 100%;
@@ -165,45 +225,87 @@ table {
     margin-top: var(--spacing-lg);
     margin-bottom: var(--spacing-lg);
     font-size: 0.875rem;
+    background-color: transparent;
+    border-radius: 0;
+    overflow: visible;
+    display: block;
+    box-shadow: none;
+}
+
+/* Transformation en cartes sur mobile */
+table thead {
+    display: none; /* Cache les en-têtes sur mobile */
+}
+
+table tbody {
+    display: block;
+    width: 100%;
+}
+
+table tr {
+    display: block;
+    width: 100%;
     background-color: var(--color-bg-primary);
     border-radius: var(--radius-md);
-    overflow-x: auto;
-    display: block;
+    margin-bottom: var(--spacing-md);
     box-shadow: var(--shadow-sm);
+    padding: var(--spacing-md);
+    border: 1px solid var(--color-border-light);
 }
 
-table thead,
-table tbody,
-table tr {
-    display: table;
+table td {
+    display: block;
     width: 100%;
-    table-layout: fixed;
-}
-
-th, td {
-    border-bottom: 1px solid var(--color-border-light);
-    padding: var(--spacing-sm) var(--spacing-sm);
+    border: none;
+    padding: var(--spacing-xs) 0;
     text-align: left;
     word-wrap: break-word;
     overflow-wrap: break-word;
-}
-
-th {
-    background-color: var(--color-bg-tertiary);
-    color: var(--color-text-primary);
-    font-weight: 600;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-td {
     color: var(--color-text-secondary);
-    font-size: 0.875rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
 }
 
-tbody tr:last-child td {
-    border-bottom: none;
+/* Première cellule = titre de la ligne (caractéristique) */
+table tbody tr td:first-child {
+    font-weight: 600;
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+/* Deuxième cellule = Standard */
+table tbody tr td:nth-child(2) {
+    margin-top: var(--spacing-sm);
+    padding-left: var(--spacing-md);
+    position: relative;
+}
+
+table tbody tr td:nth-child(2)::before {
+    content: 'Standard : ';
+    font-weight: 600;
+    color: var(--color-text-primary);
+    position: absolute;
+    left: 0;
+    font-size: 0.85rem;
+}
+
+/* Troisième cellule = Premium */
+table tbody tr td:nth-child(3) {
+    margin-top: var(--spacing-sm);
+    padding-left: var(--spacing-md);
+    position: relative;
+}
+
+table tbody tr td:nth-child(3)::before {
+    content: 'Premium : ';
+    font-weight: 600;
+    color: var(--color-text-primary);
+    position: absolute;
+    left: 0;
+    font-size: 0.85rem;
 }
 
 /* Boutons optimisés mobile */

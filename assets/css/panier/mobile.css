@@ -238,18 +238,18 @@ body.cart-mobile-page .site-header .main-nav a {
 }
 
 .cart-course-card .price {
-    font-size: 1.3rem;
+    font-size: clamp(1.125rem, 3vw, 1.3rem);
     font-weight: 700;
     color: #1a3b5d;
 }
 
 .cart-course-card .unit-label {
-    font-size: 0.9rem;
+    font-size: clamp(0.85rem, 2.2vw, 0.9rem);
     color: #5a6877;
 }
 
 .cart-course-card .total-price {
-    font-size: 1rem;
+    font-size: clamp(0.95rem, 2.5vw, 1rem);
     font-weight: 700;
     color: #28a745;
     margin-left: auto;
@@ -458,7 +458,9 @@ body.cart-mobile-page .site-header .main-nav a {
 .cards-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: var(--spacing-md);
+    width: 100%;
+    max-width: 100%;
 }
 
 .mini-card {
@@ -552,7 +554,9 @@ body.cart-mobile-page .site-header .main-nav a {
 .benefits-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem; /* Espacement augmenté */
+    gap: var(--spacing-lg);
+    width: 100%;
+    max-width: 100%;
 }
 
 .benefit-item {

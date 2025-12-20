@@ -150,9 +150,11 @@
 
 /* --- Grille de Cours --- */
 .courses-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    width: 100%;
+    max-width: 100%;
 }
 
 /* --- Carte de Cours --- */
@@ -217,17 +219,18 @@
 }
 
 .course-content h3 {
-    font-size: 1rem;
+    font-size: clamp(0.95rem, 2.5vw, 1rem);
     font-weight: 600;
     color: var(--text-dark);
-    margin: 0 0 0.4rem 0;
+    margin: 0 0 var(--spacing-sm) 0;
     line-height: 1.4;
 }
 
 .course-author {
-    font-size: 0.85rem;
+    font-size: clamp(0.8rem, 2.2vw, 0.85rem);
     color: var(--text-muted);
-    margin: 0 0 0.75rem 0;
+    margin: 0 0 var(--spacing-md) 0;
+    line-height: 1.5;
 }
 
 /* Métadonnées du cours */
@@ -285,7 +288,7 @@
 }
 
 .price {
-    font-size: 1.25rem;
+    font-size: clamp(1.125rem, 3vw, 1.25rem);
     font-weight: 700;
     color: var(--text-dark);
 }
